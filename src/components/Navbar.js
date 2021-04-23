@@ -1,21 +1,12 @@
 import '../styles/navbar.scss'
-import {useEffect, useState} from 'react'
 import {ReactComponent as Search} from '../images/search_icon.svg'
 import Profile from './Profile'
+import useFetch from './useFetch'
 
-const API = 'https://api.github.com/users/'
 
 const Navbar = () => {
 
-    const [user, setUser] = useState('')
-
-    useEffect(() => {
-        fetch(API + 'gr0bs')
-            .then(res => res.json())
-            .then(data => {
-                setUser(data)
-            })
-    },[])
+    const {data: user } = useFetch('https://api.github.com/users/Gr0bs')
 
     return ( 
         <nav>
@@ -24,7 +15,9 @@ const Navbar = () => {
                 <input type="search" placeholder="searching user"/>
                 <Search className='icon'/>
             </div>
-            <Profile image={user.avatar_url} username={user.login} />
+            {user && (
+                <Profile image={user.avatar_url} username={user.login} />
+            )}
         </nav>
      );
 }
