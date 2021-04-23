@@ -1,0 +1,13 @@
+.avatar{
+    border-radius: 50%;
+    width: 2rem;
+}
+
+.profile{
+    display: flex;
+    align-items: center;
+
+    :first-child{
+        margin-right: 0.2rem;
+    }
+}
