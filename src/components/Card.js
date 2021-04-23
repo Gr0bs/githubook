@@ -7,7 +7,7 @@ const Card = ({event, description, date}) => {
 
     return ( 
             <div className="card">
-                <Profile />
+                <Profile image={image}/>
                 <div className="card__event">
                     <p>{event}</p>
                     {description && (<cite>{description}</cite>)}

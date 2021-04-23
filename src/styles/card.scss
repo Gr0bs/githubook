@@ -1,0 +1,21 @@
+.card{
+    display: flex;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 0.5rem;
+    width: 40rem;
+    margin-bottom: 1rem;
+    background: white;
+    justify-content: space-between;
+
+    &__event{
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+
+        > * {
+            padding: 0 1rem;
+        }
+    }
+}
+
