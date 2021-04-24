@@ -16,7 +16,7 @@ const Navbar = () => {
                 <Search className='icon'/>
             </div>
             {user && (
-                <Profile image={user.avatar_url} username={user.login} />
+                <Profile image={user.avatar_url} username={user.login} size='small'/>
             )}
         </nav>
      );

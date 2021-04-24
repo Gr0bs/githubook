@@ -4,9 +4,10 @@ import {useState, useEffect} from 'react'
 
 const Card = (props) => {
 
-    const {event, description, date, image, username, subject} = props
+    const {event, description, date, image, username, subject, width} = props
 
-    let time = date // Destructre for having hours or min or days
+    let time // Destructre for having hours or min or days
+    if(date) {time = date.substring(0,10)}
 
     const [eventName, setEventName] = useState('')
 
@@ -24,12 +25,12 @@ const Card = (props) => {
     },[event])
 
     return ( 
-            <div className="card">
-                <Profile image={image} username={username}/>
+            <div className={`card card${width}`}>
+                <Profile image={image} username={username} size='medium'/>
                 <div className="card__event">
                     <p>{eventName} <strong>{subject}</strong></p>
                     {description && (<cite>"{description}"</cite>)}
-                    {time && (<span>{time}</span>)}
+                    {time && (<span className='time'>{time}</span>)}
                 </div>
            </div>
      );

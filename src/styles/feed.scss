@@ -2,8 +2,18 @@
 
 .feed{
     display: flex;
-    flex-direction: column;
-    align-items: center;
     background: $color-two;
     padding: 2rem 0;
+
+    &__event{
+        display: flex;
+        flex-direction: column;
+        flex-grow: 2;
+    }
+
+    &__discover{
+        display: flex;
+        flex-direction: column;
+    }
 }
+

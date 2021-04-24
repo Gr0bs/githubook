@@ -6,13 +6,14 @@ const Profile = (props) => {
     const {
         username,
         name,
-        image
+        image,
+        size
     } = props
 
 
     return ( 
         <div className="profile">
-            <ProfileIcon image={image} />
+            <ProfileIcon image={image} size={size} />
             {name && (<span>{name}</span>)}
             {username && (<span>{username}</span>)}
         </div>
