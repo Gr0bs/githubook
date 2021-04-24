@@ -6,12 +6,12 @@
     width: 40rem;
     margin-bottom: 1rem;
     background: white;
-    justify-content: space-between;
 
     &__event{
         display: flex;
         align-items: center;
-        justify-content: space-around;
+        justify-content: space-between;
+
 
         > * {
             padding: 0 1rem;

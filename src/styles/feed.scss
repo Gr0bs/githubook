@@ -1,6 +1,9 @@
 @import './components/colors';
 
 .feed{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background: $color-two;
     padding: 2rem 0;
 }
