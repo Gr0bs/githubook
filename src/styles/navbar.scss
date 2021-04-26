@@ -10,10 +10,28 @@ nav {
 }
 
 .search{
+    position: relative;
     display: flex;
-    align-items: center;
 
     > * {
         padding: 0 6px;
     }
+
+    &__results{
+        position: absolute;
+        background: rgb(255, 255, 255);
+        color: black;
+        width: 11.5rem;
+        border-radius: 5px;
+        top: 8;
+        
+         li {
+            padding: 0.5rem 0;
+        }
+    }
+
+    .icon{
+        cursor: pointer;
+    }
 }
+
