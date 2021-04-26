@@ -4,7 +4,7 @@ import {useState, useEffect} from 'react'
 
 const Card = (props) => {
 
-    const {event, description, date, image, username, subject, width} = props
+    const {event, description, date, image, username, subject, width, size} = props
 
     let time // Destructre for having hours or min or days
     if(date) {time = date.substring(0,10)}
@@ -26,7 +26,7 @@ const Card = (props) => {
 
     return ( 
             <div className={`card card${width}`}>
-                <Profile image={image} username={username} size='medium'/>
+                <Profile image={image} username={username} size={size}/>
                 <div className="card__event">
                     <p>{eventName} <strong>{subject}</strong></p>
                     {description && (<cite>"{description}"</cite>)}

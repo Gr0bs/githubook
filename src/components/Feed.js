@@ -12,6 +12,7 @@ const Feed = () => {
     return ( 
         <div className="feed">
             <div className="feed__discover">
+                <h2>Discover</h2>
                 {errorTwo && <span>{errorTwo}</span>}
                 {misc && misc.map(elt => (
                     <div className="feed__misc" key={elt.id}>
@@ -19,6 +20,7 @@ const Feed = () => {
                             width='__small'
                             username={elt.repo.name}
                             image={elt.actor.avatar_url}
+                            size='small'
                         />
                     </div>
                 ))}
@@ -36,6 +38,7 @@ const Feed = () => {
                         image={event.actor.avatar_url}
                         subject={event.repo.name}
                         date={event.created_at}
+                        size="medium"
                         />
                         ))
                     }
