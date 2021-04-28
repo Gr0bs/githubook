@@ -7,6 +7,7 @@ const Card = (props) => {
 
     const {event, description, date, image, username, subject, width, size, link} = props
 
+    //CREATED DATE
     let time // Destructre for having hours or min or days
     if(date) {time = date.substring(0,10)}
 
@@ -33,9 +34,11 @@ const Card = (props) => {
                     {description && (<cite>"{description}"</cite>)}
                     {time && (<span className='time'>{time}</span>)}
                 </div>
-                <Link className="card__link" to='/'>
+                {link && (
+                    <Link className="card__link" to={`/user/${username}`}>
                     <span>See Github</span>
                 </Link>
+                )}
            </div>
      );
 }

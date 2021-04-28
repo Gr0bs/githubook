@@ -7,8 +7,7 @@ const Search = () => {
 
     const {user} = useParams()
     const {data: userList, error} = useFetch(`https://api.github.com/search/users?q=${user}+in:login`)
-
-    console.log(userList)
+    
     return ( 
         <div className="userList">
             {error && <span>{error}</span>}
@@ -19,7 +18,7 @@ const Search = () => {
                             username={user.login}
                             image={user.avatar_url}
                             size='medium'
-                            link={user.html_url}
+                            link={true}
                         />
                     </li>
                 ))}
