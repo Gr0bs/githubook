@@ -1,26 +1,29 @@
-import { useEffect, useState } from "react";
+import '../../styles/searchPage.scss'
 import { useParams } from "react-router-dom";
+import useFetch from '../useFetch'
+import Card from '../Card'
 
 const Search = () => {
 
     const {user} = useParams()
-    const [userList, setUserList] = useState()
-
-    useEffect(() => {
-        fetch(`https://api.github.com/search/users?q=${user}+in:login`)
-           .then(res => res.json())
-           .then(data => {
-               setUserList(data)
-            })
-    },[user])
+    const {data: userList, error} = useFetch(`https://api.github.com/search/users?q=${user}+in:login`)
 
     console.log(userList)
-    
-
     return ( 
         <div className="userList">
-            <h2>This is user list</h2>
-            {/* <p>{userList}</p> */}
+            {error && <span>{error}</span>}
+            <ul>
+                {userList && userList.items.map( user => (
+                    <li key={user.id}>
+                        <Card 
+                            username={user.login}
+                            image={user.avatar_url}
+                            size='medium'
+                            link={user.html_url}
+                        />
+                    </li>
+                ))}
+            </ul>
         </div>
      );
 }

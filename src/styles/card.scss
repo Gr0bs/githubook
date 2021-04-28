@@ -1,3 +1,5 @@
+@import './components/colors';
+
 .card{
     display: flex;
     border: 1px solid black;
@@ -32,6 +34,14 @@
             right: 0;
             top: 0;
         }
+    }
+
+    &__link{
+        margin: auto;
+        background: $color-three;
+        color: white;
+        padding: 0.5rem;
+        border-radius: 5px;
     }
 }
 
