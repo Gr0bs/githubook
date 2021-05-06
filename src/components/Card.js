@@ -36,7 +36,7 @@ const Card = (props) => {
                 </div>
                 {link && (
                     <Link className="card__link" to={`/user/${username}`}>
-                    <span>See Github</span>
+                    <span>See Profile</span>
                 </Link>
                 )}
            </div>

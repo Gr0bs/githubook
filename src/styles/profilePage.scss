@@ -1,0 +1,37 @@
+.profilePage{
+
+    header{
+        background: red;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+
+        .profile{
+            transform: translateX(2rem);
+            &__txt{
+                display: flex;
+                flex-direction: column;
+            }
+        }
+    }
+}
+
+
+
+.user{
+
+    &__profile{
+        transform-origin: left;
+    }
+
+    &__social{
+        display: flex;
+        margin: 0.2rem;
+        padding: 0;
+
+        > *{
+            padding: 0 0.5rem ;
+        }
+    }
+}
