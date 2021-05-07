@@ -1,21 +1,32 @@
 .profilePage{
 
-    header{
-        background: red;
-        height: 12rem;
-        justify-content: center;
-        margin: auto;
-        display: flex;
-        align-items: center;
-        flex-direction: column;
+    &__banner {
 
+        header{
+            background: url('https://picsum.photos/1400/300?blur');
+            height: 12rem;
+            justify-content: center;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            color: white;
+        }
+        
         .profile{
             transform: translateX(2rem);
             &__txt{
+                font-weight: 600;
                 display: flex;
                 flex-direction: column;
             }
         }
+    }
+
+    &__events{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 }
 
@@ -42,11 +53,12 @@
 
     &__github li{
         flex-direction: column;
-        padding: 0 0.5rem;
+        padding: 0 2rem;
         text-align: center;
 
         span{
             font-size: 1.3rem;
+            font-weight: 600;
         }
     }
 }

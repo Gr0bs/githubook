@@ -1,20 +1,20 @@
 import { useParams } from "react-router-dom";
-import { useSate } from 'react'
 import Profile from "../Profile";
 import useFetch from '../useFetch'
 import '../../styles/profilePage.scss'
+import Card from "../Card";
 
 const ProfilPage = () => {
 
     const {username} = useParams()
     const {data: userProfil, error} = useFetch(`https://api.github.com/users/${username}`)
-    const {data: starredRepo, error2} = useFetch(`https://api.github.com/users/${username}/starred`)
+    const {data: starredRepo} = useFetch(`https://api.github.com/users/${username}/starred`)
+    const {data: events, errorEvent} = useFetch(`https://api.github.com/users/${username}/events`)
 
     //Social informations   
-
-
     return ( 
         <div className="profilePage">
+            <div className="profilePage__banner">
             {error && <span>{error}</span>}
             {userProfil && (
                 // HEADER BANNER WITH USER INFO
@@ -44,10 +44,30 @@ const ProfilPage = () => {
                         <li>Followers <span>{userProfil.followers}</span></li>
                         <li>Following <span>{userProfil.following}</span></li>
                         <li>Repos <span>{userProfil.public_repos}</span></li>
-                        <li>Starred Repos <span>{starredRepo.length}</span></li>
+                        {starredRepo && (
+                            <li>Starred Repos <span>{starredRepo.length}</span></li>
+                        )}
                     </ul>
                 </header>
             )}
+            </div>
+
+            <div className="profilePage__events">
+                    {errorEvent && (<span>{errorEvent}</span>)}
+                    {events && 
+                        events.map(event => (
+                            <Card
+                                image={userProfil.avatar_url}
+                                username={userProfil.login}
+                                size="small"
+                                subject={event.repo.name}
+                                date={event.created_at}
+                                width="__large"
+                                event={event.type}
+                             />
+                        ))
+                    }
+            </div>
         </div>        
      );
 }
