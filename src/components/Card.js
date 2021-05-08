@@ -16,10 +16,13 @@ const Card = (props) => {
     useEffect(() => {
         switch(event) {
             case "PublicEvent": 
-                setEventName('past public the repo')
+                setEventName('Past public the repo')
                 break;
             case "CreateEvent":
-                setEventName('create the repo ')
+                setEventName('Create the repo ')
+                break;
+            case "PushEvent":
+                setEventName('Push in to repo')
                 break;
             default:
                 setEventName(event)
