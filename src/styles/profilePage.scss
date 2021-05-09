@@ -3,7 +3,7 @@
     &__banner {
 
         header{
-            background: url('https://picsum.photos/1400/300?blur');
+            background: url('https://picsum.photos/1400/300');
             height: 12rem;
             justify-content: center;
             margin: auto;
@@ -21,12 +21,6 @@
                 flex-direction: column;
             }
         }
-    }
-
-    &__events{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
     }
 }
 
@@ -60,5 +54,42 @@
             font-size: 1.3rem;
             font-weight: 600;
         }
+    }
+}
+
+.card{
+    height: max-content;
+    padding: 0.5rem 1rem;
+
+    .profile{
+        align-self: flex-start;
+    }
+
+    &__event {
+        flex-wrap: wrap;
+        width: 70%;
+
+        p {
+            margin-top: 0.6rem;
+        }
+        cite{
+            width: 100%;
+        }
+    }
+}
+
+.feed{
+    display: flex;
+    justify-content: center;
+
+    &__events{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &__suggestions{
+        display: flex;
+        flex-direction: column;
     }
 }

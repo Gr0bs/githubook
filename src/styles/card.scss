@@ -6,9 +6,14 @@
     border-radius: 10px;
     padding: 0.5rem;
     height: 4.5rem;
-    min-width: 20rem;
     margin-bottom: 1rem;
     background: white;
+
+    &__square{
+        width: 15rem;
+        display: flex;
+        flex-direction: column;
+    }
 
     &__small{
         width: 20rem;

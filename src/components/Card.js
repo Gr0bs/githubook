@@ -11,7 +11,7 @@ const Card = (props) => {
     let time // Destructre for having hours or min or days
     if(date) {time = date.substring(0,10)}
 
-    const [eventName, setEventName] = useState('')
+    const [eventName, setEventName] = useState(null)
 
     useEffect(() => {
         switch(event) {
@@ -32,11 +32,13 @@ const Card = (props) => {
     return ( 
             <div className={`card card${width}`}>
                 <Profile image={image} username={username} size={size}/>
-                <div className="card__event">
+                {eventName && (
+                    <div className="card__event">
                     <p>{eventName} <strong>{subject}</strong></p>
                     {description && (<cite>"{description}"</cite>)}
                     {time && (<span className='time'>{time}</span>)}
-                </div>
+                     </div>
+                )}
                 {link && (
                     <Link className="card__link" to={`/user/${username}`}>
                     <span>See Profile</span>

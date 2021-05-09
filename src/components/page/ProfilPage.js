@@ -10,6 +10,11 @@ const ProfilPage = () => {
     const {data: userProfil, error} = useFetch(`https://api.github.com/users/${username}`)
     const {data: starredRepo} = useFetch(`https://api.github.com/users/${username}/starred`)
     const {data: events, errorEvent} = useFetch(`https://api.github.com/users/${username}/events`)
+    const {data: suggestion, errorSuggestion} = useFetch(`https://api.github.com/users/${username}/following`)
+    // CREATE A RANDOM SUGGESTION
+
+
+
 
 
     //Social informations   
@@ -53,43 +58,60 @@ const ProfilPage = () => {
             )}
             </div>
 
-            <div className="profilePage__events">
-                    {errorEvent && (<span>{errorEvent}</span>)}
-                    { events && events.map(event => {
-                        if(event.type === 'PushEvent'){
-                            return(
-                                event.payload.commits.map((commit, index) => (
+            <section className="feed">
+                <div className="feed__events">
+                        {errorEvent && (<span>{errorEvent}</span>)}
+                        { events && events.map(event => {
+                            if(event.type === 'PushEvent'){
+                                return(
+                                    event.payload.commits.map((commit, index) => (
+                                        <Card
+                                        key={index}
+                                        image={userProfil.avatar_url}
+                                        size="small"
+                                        subject={event.repo.name}
+                                        date={event.created_at}
+                                        width="__large"
+                                        event={"Commit on the repo"}
+                                        description={commit.message}
+                                        />
+                                        ))
+                                )
+                            } else {
+                                return (
                                     <Card
-                                    key={index}
+                                    key={event.id}
                                     image={userProfil.avatar_url}
-                                    username={userProfil.login}
                                     size="small"
                                     subject={event.repo.name}
                                     date={event.created_at}
                                     width="__large"
-                                    event={"Commit on the repo"}
-                                    description={commit.message}
-                                    />
-                                    ))
-                            )
-                        } else {
-                            return (
-                                <Card
-                                key={event.id}
-                                image={userProfil.avatar_url}
-                                username={userProfil.login}
-                                size="small"
-                                subject={event.repo.name}
-                                date={event.created_at}
-                                width="__large"
-                                event={event.type}
-                                description={event.payload.description}
-                            />
-                            )
+                                    event={event.type}
+                                    description={event.payload.description}
+                                />
+                                )
+                            }
+                        })
                         }
-                     })
-                    }
-            </div>
+                </div>
+
+                <div className="feed__suggestions">
+                    <h2>Suggestions</h2>
+                    {errorSuggestion && (<span>{errorSuggestion}</span>)}
+                    {suggestion && (
+                        suggestion.map(user => (
+                            <Card 
+                                key={user.id}
+                                image={user.avatar_url}
+                                size="small"
+                                width='__square'
+                                username={user.login}
+                                link={true}
+                            />
+                        ))
+                    )}
+                </div>
+            </section>
         </div>        
      );
 }
