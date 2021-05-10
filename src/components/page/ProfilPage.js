@@ -31,7 +31,7 @@ const ProfilPage = () => {
                         image={userProfil.avatar_url}
                         size='high'
                         />
-
+                    <em>{userProfil.bio}</em>
                     {/* USER SOCIAL LINKS & INFOS */}
                     <ul className="user__social">
                         {userProfil.twitter_username && (

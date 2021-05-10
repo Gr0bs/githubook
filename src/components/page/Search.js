@@ -8,6 +8,10 @@ const Search = () => {
     const {user} = useParams()
     const {data: userList, error} = useFetch(`https://api.github.com/search/users?q=${user}+in:login`)
     
+    if(user === null){
+        console.log('nothing')
+    }
+
     return ( 
         <div className="userList">
             {error && <span>{error}</span>}
