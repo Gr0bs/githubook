@@ -78,14 +78,22 @@
     }
 }
 
-.feed{
+.wall{
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
+
+    &__tab{
+        display: inline-block;
+        width: 80%;
+        text-align: center;
+    }
 
     &__events{
         display: flex;
         flex-direction: column;
         align-items: center;
+        max-width: 60%;
     }
 
     &__suggestions{

@@ -19,7 +19,7 @@ const Navbar = () => {
 
             <div className="search">
                 <input type="search" placeholder="searching user" onChange={(e) => setValue(e.target.value)} />
-                <Link to={`search/${value}`}>
+                <Link to={`/search/${value}`}>
                    <Search className='icon'/>
                 </Link>
             </div>

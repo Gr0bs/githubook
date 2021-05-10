@@ -3,19 +3,30 @@ import Profile from "../Profile";
 import useFetch from '../useFetch'
 import '../../styles/profilePage.scss'
 import Card from "../Card";
+import Activity from "../Activity";
+import Repo from "../Repo";
+import {useState} from 'react'
 
 const ProfilPage = () => {
 
     const {username} = useParams()
     const {data: userProfil, error} = useFetch(`https://api.github.com/users/${username}`)
     const {data: starredRepo} = useFetch(`https://api.github.com/users/${username}/starred`)
-    const {data: events, errorEvent} = useFetch(`https://api.github.com/users/${username}/events`)
     const {data: suggestion, errorSuggestion} = useFetch(`https://api.github.com/users/${username}/following`)
     // CREATE A RANDOM SUGGESTION
 
+    const [seeActivity, setSeeActivity] = useState(true)
+    const [seeRepo, setSeeRepo] = useState(false)
 
-
-
+    const handleTab = () => {
+        if(seeActivity) {
+            setSeeActivity(false)
+            setSeeRepo(true)
+        } else{
+            setSeeActivity(true)
+            setSeeRepo(false)
+        }
+    }
 
     //Social informations   
     return ( 
@@ -58,44 +69,25 @@ const ProfilPage = () => {
             )}
             </div>
 
-            <section className="feed">
-                <div className="feed__events">
-                        {errorEvent && (<span>{errorEvent}</span>)}
-                        { events && events.map(event => {
-                            if(event.type === 'PushEvent'){
-                                return(
-                                    event.payload.commits.map((commit, index) => (
-                                        <Card
-                                        key={index}
-                                        image={userProfil.avatar_url}
-                                        size="small"
-                                        subject={event.repo.name}
-                                        date={event.created_at}
-                                        width="__large"
-                                        event={"Commit on the repo"}
-                                        description={commit.message}
-                                        />
-                                        ))
-                                )
-                            } else {
-                                return (
-                                    <Card
-                                    key={event.id}
-                                    image={userProfil.avatar_url}
-                                    size="small"
-                                    subject={event.repo.name}
-                                    date={event.created_at}
-                                    width="__large"
-                                    event={event.type}
-                                    description={event.payload.description}
-                                />
-                                )
-                            }
-                        })
-                        }
+            <section className="wall">
+                <div className="wall__tab">
+                    <button onClick={handleTab}>Activity</button>
+                    <button onClick={handleTab}>Repo</button>
+                </div>
+                <div className="wall__events">
+                    {seeActivity && (
+                        <Activity 
+                            username={username}
+                            />
+                    )}
+                    {seeRepo && (
+                        <Repo 
+                            username={username}
+                        />
+                    )}
                 </div>
 
-                <div className="feed__suggestions">
+                <div className="wall__suggestions">
                     <h2>Suggestions</h2>
                     {errorSuggestion && (<span>{errorSuggestion}</span>)}
                     {suggestion && (
