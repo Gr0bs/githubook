@@ -1,52 +1,24 @@
 @import './components/colors';
 
 .card{
-    display: flex;
-    border: 1px solid black;
-    border-radius: 10px;
-    padding: 0.5rem;
-    height: 4.5rem;
+
+    background: $color-four;
+    border-radius: 5px;
+    padding: 0.3rem;
     margin-bottom: 1rem;
-    background: white;
+    display: flex;
 
-    &__square{
-        width: 15rem;
-        display: flex;
-        flex-direction: column;
+    &__image{
+        background: url('https://picsum.photos/200/200');
+        height: 200px;
+        width: 200px;
+        margin-right: 1rem;
     }
 
-    &__small{
-        width: 20rem;
-    }
-
-    &__large{
-        width: 45rem;
-    }
-
-    &__event{
-        display: flex;
-        align-items: center;
-        flex-grow: 2;
-        position: relative;
-
-
-        > * {
-            padding: 0 1rem;
-        }
-
-        .time {
-            position: absolute;
-            right: 0;
-            top: 0;
-        }
-    }
-
-    &__link{
-        margin: auto;
-        background: $color-three;
-        color: white;
-        padding: 0.5rem;
-        border-radius: 5px;
+    &--feed{
+        margin-bottom: 1.5rem;
     }
 }
+
+
 

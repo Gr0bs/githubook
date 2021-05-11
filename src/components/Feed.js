@@ -17,8 +17,9 @@ const Feed = () => {
                 {misc && misc.map(elt => (
                     <div className="feed__misc" key={elt.id}>
                         <Card 
-                            width='__small'
-                            username={elt.repo.name}
+                            username={elt.actor.display_login}
+                            subject={elt.repo.name.substring(elt.repo.name.lastIndexOf('/') + 1)}
+                            event=' '
                             image={elt.actor.avatar_url}
                             size='small'
                         />
@@ -31,7 +32,7 @@ const Feed = () => {
             {data && data.map(event => (
                     <Card
                         key={event.id}
-                        width='__large'
+                        type='feed'
                         event={event.type} 
                         description={event.payload.description}
                         username={event.actor.login}
