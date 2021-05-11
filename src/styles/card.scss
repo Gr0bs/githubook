@@ -1,22 +1,50 @@
 @import './components/colors';
 
 .card{
-
+    position: relative;
     background: $color-four;
     border-radius: 5px;
     padding: 0.3rem;
     margin-bottom: 1rem;
     display: flex;
+    max-width: 60rem;
+
 
     &__image{
-        background: url('https://picsum.photos/200/200');
-        height: 200px;
-        width: 200px;
-        margin-right: 1rem;
+        order: 10;
+        background: linear-gradient(to right, $color-three, $color-five);    
+        padding: 0.5rem;    
+        margin: -0.3rem;
+        margin-left: 1rem;
+
+        .img{
+            width: 150px;
+            height: 150px;
+            display: block;
+            background: url('https://picsum.photos/150/150');
+        }
     }
 
+    .time{
+        position: absolute;
+        top: 0.2rem;
+        right: 11rem;
+    }
+
+    &__event{
+        display: flex;
+        flex-wrap: wrap;
+
+        cite {
+            width:100%;
+            text-align: center;
+        }
+    }
     &--feed{
         margin-bottom: 1.5rem;
+        justify-content: space-between;
+        align-items: center;
+
     }
 }
 

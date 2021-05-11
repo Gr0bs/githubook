@@ -17,8 +17,11 @@
 .profile{
     display: flex;
     align-items: center;
+    width: max-content;
 
     :first-child{
         margin-right: 0.2rem;
+        align-self: center;
+        display: flex;
     }
 }

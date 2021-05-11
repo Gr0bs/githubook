@@ -31,20 +31,22 @@ const Card = (props) => {
 
     return ( 
             <div className={`card card--${type}`}>
-                {type==='feed' && (<div className="card__image"></div>)}
-                <Profile image={image} username={username} size={size}/>
-                {eventName && (
-                    <div className="card__event">
-                        <p>{eventName} <strong>{subject}</strong></p>
-                        {description && (<cite>"{description}"</cite>)}
-                        {time && (<span className='time'>{time}</span>)}
-                     </div>
-                )}
-                {link && (
-                    <Link className="card__link" to={`/user/${username}`}>
-                    <span>See Profile</span>
-                </Link>
-                )}
+                {type==='feed' && (<div className="card__image">
+                    <span className='img'></span>
+                </div>)}
+                    {eventName && (
+                        <div className="card__event">
+                            <Profile image={image} username={username} size={size}/>
+                            {time && (<span className='time'>{time}</span>)}
+                            <p>{eventName} <strong>{subject}</strong></p>
+                            {description && (<cite>"{description}"</cite>)}
+                        </div>
+                    )}
+                    {link && (
+                        <Link className="card__link" to={`/user/${username}`}>
+                             <span>See Profile</span>
+                        </Link>
+                    )}
            </div>
      );
 }
