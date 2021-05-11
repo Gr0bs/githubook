@@ -1,5 +1,7 @@
 import '../styles/navbar.scss'
-import {ReactComponent as Search} from '../images/search_icon.svg'
+import {ReactComponent as Search} from '../images/search.svg'
+import {ReactComponent as Logo} from '../images/Logo.svg'
+import {ReactComponent as Discover} from '../images/discover.svg'
 import {Link} from 'react-router-dom'
 import Profile from './Profile'
 import useFetch from './useFetch'
@@ -12,21 +14,24 @@ const Navbar = () => {
     const {data: user } = useFetch('https://api.github.com/users/Gr0bs')
 
     return ( 
-        <nav>
+        <nav className='menu'>
             <Link to='/'>
-                <div className="logo">Github Social</div>
+                <Logo className='logo' alt='Logo Gitstagram' />
             </Link>
 
-            <div className="search">
+            <div className="menu__search">
                 <input type="search" placeholder="searching user" onChange={(e) => setValue(e.target.value)} />
                 <Link to={`/search/${value}`}>
                    <Search className='icon'/>
                 </Link>
             </div>
 
-            {user && (
-                <Profile image={user.avatar_url} username={user.login} size='small'/>
-            )}
+            <div className='menu__right'>
+                <Discover className='icon' />
+                {user && (
+                    <Profile image={user.avatar_url} username={user.login} size='small'/>
+                )}
+            </div>
         </nav>
      );
 }
