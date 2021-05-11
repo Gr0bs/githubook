@@ -18,17 +18,17 @@
         margin-left: 1rem;
 
         .img{
-            width: 150px;
-            height: 150px;
+            width: 100px;
+            height: 100px;
             display: block;
-            background: url('https://picsum.photos/150/150');
+            background: url('https://picsum.photos/100/100');
         }
     }
 
     .time{
         position: absolute;
         top: 0.2rem;
-        right: 11rem;
+        right: 8rem;
     }
 
     &__event{
