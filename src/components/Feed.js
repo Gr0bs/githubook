@@ -14,17 +14,20 @@ const Feed = () => {
             <div className="feed__discover">
                 <h2>Discover</h2>
                 {errorTwo && <span>{errorTwo}</span>}
-                {misc && misc.map(elt => (
-                    <div className="feed__misc" key={elt.id}>
+                {misc && misc.map((elt, index) => {
+                    if(index > 5)(
+                        <div className="feed__misc" key={elt.id}>
                         <Card 
-                            username={elt.actor.display_login}
-                            subject={elt.repo.name.substring(elt.repo.name.lastIndexOf('/') + 1)}
-                            event=' '
-                            image={elt.actor.avatar_url}
-                            size='small'
+                        type='discover'
+                        username={elt.actor.display_login}
+                        event=' '
+                        image={elt.actor.avatar_url}
+                        link={true}
+                        size='small'
                         />
-                    </div>
-                ))}
+                        </div>
+                    )
+                })}
             </div>
 
             <div className="feed__event" >

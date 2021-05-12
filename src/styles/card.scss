@@ -25,6 +25,15 @@
         }
     }
 
+    &__link{
+        width: max-content;
+        padding: 0.5rem;
+        color: $color-three;
+        font-weight: 500;
+        border-radius: 2px;
+        align-self: center;
+    }
+
     .time{
         position: absolute;
         top: 0.2rem;
@@ -40,11 +49,19 @@
             text-align: center;
         }
     }
+    
     &--feed{
         margin-bottom: 1.5rem;
         justify-content: space-between;
         align-items: center;
 
+    }
+
+    &--discover{
+        background: $color-one;
+        color: white;
+        max-width: 15rem;
+        justify-content: space-between;
     }
 }
 

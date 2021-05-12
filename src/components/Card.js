@@ -7,10 +7,6 @@ const Card = (props) => {
 
     const {event, description, date, image, username, subject, type, size, link} = props
 
-    //CREATED DATE
-    let time // Destructre for having hours or min or days
-    if(date) {time = date.substring(0,10)}
-
     const [eventName, setEventName] = useState(null)
 
     useEffect(() => {
@@ -37,14 +33,14 @@ const Card = (props) => {
                     {eventName && (
                         <div className="card__event">
                             <Profile image={image} username={username} size={size}/>
-                            {time && (<span className='time'>{time}</span>)}
+                            {date && (<span className='time'>{date}</span>)}
                             <p>{eventName} <strong>{subject}</strong></p>
                             {description && (<cite>"{description}"</cite>)}
                         </div>
                     )}
                     {link && (
                         <Link className="card__link" to={`/user/${username}`}>
-                             <span>See Profile</span>
+                             <span>See</span>
                         </Link>
                     )}
            </div>
