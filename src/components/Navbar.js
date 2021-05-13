@@ -34,11 +34,9 @@ const Navbar = () => {
                 {showSearch && (
                     <Search 
                         username={value}
+                        setShowSearch={setShowSearch}
                     />
                 )}
-                <Link to={`/search/${value}`}>
-                   <SearchIcon className='icon'/>
-                </Link>
             </div>
 
             <div className='menu__right'>

@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react'
 import '../styles/search.scss'
-import useFetch from './useFetch'
 
-const Search = ({username}) => {
+const Search = ({username, setShowSearch}) => {
 
     console.log('Username : ' + username)
     const [loading, setLoading] = useState(true)
-    const [users, setUsers] = useState([])
+    const [error, setError] = useState(null)
+    const [users, setUsers] = useState('')
+    const [empty, setEmpty] = useState(false)
 
     const fetchData = async (username) => {
 
@@ -14,27 +15,40 @@ const Search = ({username}) => {
         .then(res => res.json())
         .then(data => {
             setUsers(data)
+            setError(null)
+            setLoading(false)
+            setEmpty(false)
         })
-        .catch(err => console.log(err))
-        setLoading(false)
+        .catch(err => {
+            console.log('ERR : ' + err.message)
+            setError(err.message)
+            setLoading(false)
+            setEmpty(true)
+        })
     }
 
     useEffect(() => {
         if(username !== ''){
             fetchData(username)
-        } else if(username == ''){
+        } else if(username === ''){
             setLoading(true)
+            setEmpty(true)
         }
     },[username])
-        
+    
+
+    const handleClick = () => {
+        setShowSearch(false)
+    }
 
     return ( 
         <div className="search">
             <div className="search__modal">
-              <>  {loading && (
+                {error && <span>{error}</span>}
+                {empty && <span>Searching for an user ?</span>}
+                {loading && !empty &&(
                     <span>Loading....</span>
                 )}
-                
                 {!loading && (
                     users.items.map( user => (
                         <p key={user.id}>
@@ -44,9 +58,8 @@ const Search = ({username}) => {
                     )
                     )
                 }
-                </>
             </div>
-            {/* <div className="search__elt" onClick={handleClick}></div> */}
+            <div className="search__elt" onClick={handleClick}></div>
         </div>
      );
 }
