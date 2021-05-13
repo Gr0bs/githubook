@@ -4,6 +4,8 @@
     position: absolute;
 
     &__modal{
+        overflow: scroll;
+        height: 15rem;
         transform: translateX(-30px);
         transform-origin: center;
         width: 15rem;
@@ -11,9 +13,13 @@
         top: 2.5rem;
         z-index: 12;
         background: white;
-        padding: 1rem;
+        padding: 0 1rem;
         border-radius: 5px;
-        color: $color-three;
+
+        a{
+            color: $color-three;
+            padding: 0 0.1rem;
+        }
     }
 
     &__elt{

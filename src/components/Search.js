@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 import '../styles/search.scss'
+import Profile from './Profile'
+import {Link} from 'react-router-dom'
 
 const Search = ({username, setShowSearch}) => {
 
@@ -51,9 +53,13 @@ const Search = ({username, setShowSearch}) => {
                 )}
                 {!loading && (
                     users.items.map( user => (
-                        <p key={user.id}>
-                            {user.login}
-                        </p>
+                        <Link key={user.id} to={`/user/${user.login}`} onClick={handleClick}>
+                            <Profile
+                                username={user.login}
+                                image={user.avatar_url}
+                                size='small'
+                            />
+                        </Link>
                         )
                     )
                     )
