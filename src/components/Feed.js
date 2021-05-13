@@ -21,7 +21,6 @@ const Feed = () => {
                             <Card 
                             type='discover'
                             username={elt.actor.display_login}
-                            event=' '
                             image={elt.actor.avatar_url}
                             link={true}
                             size='small'

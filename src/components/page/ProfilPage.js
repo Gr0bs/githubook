@@ -96,7 +96,8 @@ const ProfilPage = () => {
                                 key={user.id}
                                 image={user.avatar_url}
                                 size="small"
-                                width='__square'
+                                event=' '
+                                type='discover'
                                 username={user.login}
                                 link={true}
                             />

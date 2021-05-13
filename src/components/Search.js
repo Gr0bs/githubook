@@ -5,7 +5,6 @@ import {Link} from 'react-router-dom'
 
 const Search = ({username, setShowSearch}) => {
 
-    console.log('Username : ' + username)
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
     const [users, setUsers] = useState('')
@@ -51,19 +50,22 @@ const Search = ({username, setShowSearch}) => {
                 {loading && !empty &&(
                     <span>Loading....</span>
                 )}
+                <ul>
                 {!loading && (
                     users.items.map( user => (
-                        <Link key={user.id} to={`/user/${user.login}`} onClick={handleClick}>
-                            <Profile
-                                username={user.login}
-                                image={user.avatar_url}
-                                size='small'
-                            />
-                        </Link>
+                        <li key={user.id}>
+                            <Link  to={`/user/${user.login}`} onClick={handleClick}>
+                                <Profile
+                                    username={user.login}
+                                    image={user.avatar_url}
+                                    size='small'
+                                    />
+                            </Link>
+                        </li>
                         )
                     )
-                    )
-                }
+                )}
+                </ul>
             </div>
             <div className="search__elt" onClick={handleClick}></div>
         </div>

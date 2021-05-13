@@ -7,7 +7,7 @@ import ProfilPage from './page/ProfilPage';
 function App() {
   return (
     <Router>
-      <div className="App">
+      <div className="app">
         <Navbar />
         <Switch>
           <Route exact path='/'>

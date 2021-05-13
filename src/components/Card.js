@@ -30,14 +30,12 @@ const Card = (props) => {
                 {type==='feed' && (<div className="card__image">
                     <span className='img'></span>
                 </div>)}
-                    {eventName && (
                         <div className="card__event">
                             <Profile image={image} username={username} size={size}/>
                             {date && (<span className='time'>{date}</span>)}
                             <p>{eventName} <strong>{subject}</strong></p>
                             {description && (<cite>"{description}"</cite>)}
                         </div>
-                    )}
                     {link && (
                         <Link className="card__link" to={`/user/${username}`}>
                              <span>See</span>

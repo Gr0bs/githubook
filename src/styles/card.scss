@@ -44,6 +44,9 @@
         display: flex;
         flex-wrap: wrap;
 
+        p{
+            align-self: center;
+        }
         cite {
             width:100%;
             text-align: center;

@@ -16,9 +16,12 @@
         padding: 0 1rem;
         border-radius: 5px;
 
+        li{
+            padding:  0.5rem 0;
+        }
+
         a{
             color: $color-three;
-            padding: 0 0.1rem;
         }
     }
 
