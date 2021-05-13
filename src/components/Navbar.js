@@ -13,7 +13,7 @@ const Navbar = () => {
 
     const [value, setValue] = useState('')
     const {data: user } = useFetch('https://api.github.com/users/Gr0bs')
-
+    console.log('value :' + value)
     const [showSearch, setShowSearch] = useState(false)
 
     const openSearch = () => {
@@ -29,13 +29,13 @@ const Navbar = () => {
             <div className="menu__search">
                 <input type="search" placeholder="searching user" 
                     onChange={(e) => setValue(e.target.value)} 
-                    onClick={openSearch}
+                    onClick={(e) => openSearch()}
                 />
-                <Search 
-                    showSearch={showSearch}
-                    setShowSearch={setShowSearch}
-                    username={value}
-                />
+                {showSearch && (
+                    <Search 
+                        username={value}
+                    />
+                )}
                 <Link to={`/search/${value}`}>
                    <SearchIcon className='icon'/>
                 </Link>

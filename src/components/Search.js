@@ -2,25 +2,51 @@ import { useEffect, useState } from 'react'
 import '../styles/search.scss'
 import useFetch from './useFetch'
 
-const Search = ({showSearch, setShowSearch, username}) => {
+const Search = ({username}) => {
 
-    const [data, error] = useFetch(`https://api.github.com/users/${username}`)
-    const user = {...data}
+    console.log('Username : ' + username)
+    const [loading, setLoading] = useState(true)
+    const [users, setUsers] = useState([])
 
-        setShowSearch(false)
+    const fetchData = async (username) => {
+
+        await fetch(`https://api.github.com/search/users?q=${username}+in:login`)
+        .then(res => res.json())
+        .then(data => {
+            setUsers(data)
+        })
+        .catch(err => console.log(err))
+        setLoading(false)
     }
 
+    useEffect(() => {
+        if(username !== ''){
+            fetchData(username)
+        } else if(username == ''){
+            setLoading(true)
+        }
+    },[username])
+        
+
     return ( 
-        <div className="search" style={showSearch ? {display: 'block' } : {display: 'none'}}>
+        <div className="search">
             <div className="search__modal">
-                {/* {error && <span>{error}</span>} */}
-                {showSearch && data.item.map( user => (
-                    <p>{user.login}</p>
-                )
-                    
+              <>  {loading && (
+                    <span>Loading....</span>
                 )}
+                
+                {!loading && (
+                    users.items.map( user => (
+                        <p key={user.id}>
+                            {user.login}
+                        </p>
+                        )
+                    )
+                    )
+                }
+                </>
             </div>
-            <div className="search__elt" onClick={handleClick}></div>
+            {/* <div className="search__elt" onClick={handleClick}></div> */}
         </div>
      );
 }
