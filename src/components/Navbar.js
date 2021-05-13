@@ -8,14 +8,13 @@ import useFetch from './useFetch'
 import { useState } from 'react'
 import Search from './Search'
 
-
 const Navbar = () => {
+
 
     const [value, setValue] = useState('')
     const {data: user } = useFetch('https://api.github.com/users/Gr0bs')
 
     const [showSearch, setShowSearch] = useState(false)
-
 
     const openSearch = () => {
         setShowSearch(true)
@@ -35,6 +34,7 @@ const Navbar = () => {
                 <Search 
                     showSearch={showSearch}
                     setShowSearch={setShowSearch}
+                    username={value}
                 />
                 <Link to={`/search/${value}`}>
                    <SearchIcon className='icon'/>
