@@ -2,7 +2,6 @@ import '../styles/App.scss';
 import Navbar from './Navbar';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import Home from './page/Home'
-import Search from './page/Search'
 import ProfilPage from './page/ProfilPage';
 
 function App() {
@@ -13,9 +12,6 @@ function App() {
         <Switch>
           <Route exact path='/'>
             <Home />
-          </Route>
-          <Route exact path='/search/:user'>
-            <Search />
           </Route>
           <Route exact path="/user/:username">
             <ProfilPage />

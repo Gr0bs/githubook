@@ -15,18 +15,20 @@ const Feed = () => {
                 <h2>Discover</h2>
                 {errorTwo && <span>{errorTwo}</span>}
                 {misc && misc.map((elt, index) => {
-                    if(index > 5)(
-                        <div className="feed__misc" key={elt.id}>
-                        <Card 
-                        type='discover'
-                        username={elt.actor.display_login}
-                        event=' '
-                        image={elt.actor.avatar_url}
-                        link={true}
-                        size='small'
-                        />
+                    if(index < 5){
+                        return(
+                            <div className="feed__misc" key={elt.id}>
+                            <Card 
+                            type='discover'
+                            username={elt.actor.display_login}
+                            event=' '
+                            image={elt.actor.avatar_url}
+                            link={true}
+                            size='small'
+                            />
                         </div>
-                    )
+                        )
+                    }
                 })}
             </div>
 

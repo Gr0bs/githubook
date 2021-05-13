@@ -1,23 +1,28 @@
 @import './components/colors';
 
-.feed{
+.feed, .feed > * {
     display: flex;
-    width: 100%;
+}
+
+.feed{
     > :first-child {
         padding-right:2rem;
         padding-left: 1rem;
     }
 
     &__event{
-        display: flex;
         flex-direction: column;
         flex-grow: 3;
         margin-top: 4.2rem;
     }
 
     &__discover{
-        display: flex;
+        margin-top: 3rem;
         flex-direction: column;
+
+        h2 {
+            border-bottom: 8px $color-three solid;
+        }
     }
 }
 
