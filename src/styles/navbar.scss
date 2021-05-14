@@ -27,6 +27,8 @@ nav {
 .menu {
     &__search{
         position: relative;
+        color: $color-two;
+        align-items: center;
     }
     
     &__results{

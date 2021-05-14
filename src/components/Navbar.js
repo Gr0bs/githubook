@@ -36,13 +36,18 @@ const Navbar = () => {
                         username={value}
                         setShowSearch={setShowSearch}
                     />
-                )}
+                    )}
+                <SearchIcon  className='icon'/>
             </div>
 
             <div className='menu__right'>
-                <Discover className='icon' />
+                <Link to='/discover'>
+                    <Discover className='icon' />
+                </Link>
                 {user && (
-                    <Profile image={user.avatar_url} username={user.login} size='small'/>
+                    <Link to={`/user/${user.login}`}>
+                        <Profile image={user.avatar_url} username={user.login} size='small'/>
+                    </Link>
                 )}
             </div>
         </nav>

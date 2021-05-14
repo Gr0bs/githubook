@@ -4,7 +4,6 @@ import useFetch from './useFetch'
 
 const Feed = () => {
 
-
     const username = 'Gr0bs'
     const {data, error: errorOne} = useFetch(`https://api.github.com/users/${username}/received_events`)
     const {data: misc, error: errorTwo} = useFetch(`https://api.github.com/events`)
