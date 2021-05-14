@@ -1,6 +1,7 @@
 import '../styles/feed.scss'
 import Card from './Card'
 import useFetch from './useFetch'
+import {Link} from 'react-router-dom'
 
 const Feed = () => {
 
@@ -17,17 +18,20 @@ const Feed = () => {
                     if(index < 5){
                         return(
                             <div className="feed__misc" key={elt.id}>
-                            <Card 
-                            type='discover'
-                            username={elt.actor.display_login}
-                            image={elt.actor.avatar_url}
-                            link={true}
-                            size='small'
-                            />
-                        </div>
+                                <Card 
+                                type='discover'
+                                username={elt.actor.display_login}
+                                image={elt.actor.avatar_url}
+                                link={true}
+                                size='small'
+                                />
+                           </div>
                         )
                     }
                 })}
+                <Link to='/discover'>
+                    <p>See more</p>
+                </Link>
             </div>
 
             <div className="feed__event" >
@@ -41,7 +45,7 @@ const Feed = () => {
                         username={event.actor.login}
                         image={event.actor.avatar_url}
                         subject={event.repo.name}
-                        date={event.created_at}
+                        date={event.created_at.substring(0,10)}
                         size="medium"
                         />
                         ))

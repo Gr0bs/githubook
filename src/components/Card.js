@@ -20,6 +20,9 @@ const Card = (props) => {
             case "PushEvent":
                 setEventName('Push in to repo')
                 break;
+            case "WatchEvent":
+                setEventName('Start watching the repo')
+                break;
             default:
                 setEventName(event)
             }

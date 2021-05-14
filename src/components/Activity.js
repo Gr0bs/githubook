@@ -18,7 +18,7 @@ const Activity = ({username}) => {
                             image={event.actor.avatar_url}
                             size="small"
                             subject={event.repo.name.substring(username.length + 1)}
-                            date={event.created_at}
+                            date={event.created_at.substring(0,10)}
                             type='feed'
                             event={"Commit on the repo"}
                             description={commit.message}

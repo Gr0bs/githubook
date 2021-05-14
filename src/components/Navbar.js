@@ -20,6 +20,10 @@ const Navbar = () => {
         setShowSearch(true)
     }
 
+    const handleReset= () => {
+        setValue('')
+    }
+
     return ( 
         <nav className='menu'>
             <Link to='/'>
@@ -37,7 +41,7 @@ const Navbar = () => {
                         setShowSearch={setShowSearch}
                     />
                     )}
-                <SearchIcon  className='icon'/>
+                <SearchIcon  className='icon icon--inactif'/>
             </div>
 
             <div className='menu__right'>

@@ -23,7 +23,12 @@
         margin-top: -2rem;
         
         h2 {
+            color: white;
             @include border-bottom;
+        }
+
+        p {
+            color: $color-five;
         }
     }
 }

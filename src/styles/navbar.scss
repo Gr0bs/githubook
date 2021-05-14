@@ -21,6 +21,10 @@ nav {
     .icon{
         padding: 0 0.6rem;
         cursor: pointer;
+
+        &--inactif{
+            cursor:auto;
+        }
     }
 }
 
