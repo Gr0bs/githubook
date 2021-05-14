@@ -6,6 +6,9 @@ import Card from "../Card";
 import Activity from "../Activity";
 import Repo from "../Repo";
 import {useState} from 'react'
+import {ReactComponent as TwitterLogo} from '../../images/twitter.svg'
+import {ReactComponent as MailLogo} from '../../images/mail.svg'
+import {ReactComponent as WebLogo} from '../../images/web.svg'
 
 const ProfilPage = () => {
 
@@ -45,13 +48,19 @@ const ProfilPage = () => {
                     {/* USER SOCIAL LINKS & INFOS */}
                     <ul className="user__social">
                         {userProfil.twitter_username && (
-                            <li><a href={`https://twitter.com/${userProfil.twitter_username}`}>X</a></li>
+                            <li><a href={`https://twitter.com/${userProfil.twitter_username}`}>
+                                <TwitterLogo className="icon" />
+                            </a></li>
                         )}
                         { userProfil.blog && (
-                            <li><a href={`https://twitter.com/${userProfil.blog}`}>X</a></li>
+                            <li><a href={`https://twitter.com/${userProfil.blog}`}>
+                                <WebLogo className="icon" />
+                            </a></li>
                         )}
                         { userProfil.email && (
-                            <li><a href={`https://twitter.com/${userProfil.email}`}>X</a></li>
+                            <li><a href={`https://twitter.com/${userProfil.email}`}>
+                                <MailLogo className="icon" />
+                            </a></li>
                         )}
                     </ul>
 
