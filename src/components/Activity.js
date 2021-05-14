@@ -19,7 +19,7 @@ const Activity = ({username}) => {
                             size="small"
                             subject={event.repo.name}
                             date={event.created_at}
-                            width="__large"
+                            type='feed'
                             event={"Commit on the repo"}
                             description={commit.message}
                             />
@@ -33,7 +33,7 @@ const Activity = ({username}) => {
                         size="small"
                         subject={event.repo.name}
                         date={event.created_at}
-                        width="__large"
+                        type='feed'
                         event={event.type}
                         description={event.payload.description}
                     />

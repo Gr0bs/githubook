@@ -1,3 +1,6 @@
+@import './components/colors';
+@import './components/mixin';
+
 .profilePage{
     padding-top: 3rem;
     
@@ -79,7 +82,22 @@
     }
 
     &__suggestions{
-        display: flex;
-        flex-direction: column;
+        margin-left: 3rem;
+
+        h2 {
+            color: white;
+            margin-bottom: 1.5rem;
+            padding: 0.5rem 0;
+            @include border-bottom;
+        }
+        > * {
+            display: flex;
+            flex-direction: column;
+        }
+
+        a {
+            background: $color-three;
+            color: white;
+        }
     }
 }

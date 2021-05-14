@@ -1,0 +1,27 @@
+@import './colors';
+
+.btn{
+    border: none;
+    background: none;
+    color: white;
+    font-size: 1.2rem;
+    padding-bottom: 0.3rem;
+
+    &--profil{
+        margin: 1rem;
+        cursor: pointer;
+
+        &:hover{
+            color: $color-three;
+        }
+
+    }
+}
+
+.active{
+    border-bottom: 3px solid $color-three;
+    &:hover{
+        color: white;
+    }
+
+}

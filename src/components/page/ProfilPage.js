@@ -28,7 +28,6 @@ const ProfilPage = () => {
         }
     }
 
-    //Social informations   
     return ( 
         <div className="profilePage">
             <div className="profilePage__banner">
@@ -71,8 +70,8 @@ const ProfilPage = () => {
 
             <section className="wall">
                 <div className="wall__tab">
-                    <button onClick={handleTab}>Activity</button>
-                    <button onClick={handleTab}>Repo</button>
+                    <button className={ seeActivity ? `btn btn--profil active` : 'btn btn--profil'} onClick={handleTab}>Activity</button>
+                    <button className={ seeRepo ? `btn btn--profil active` : 'btn btn--profil'} onClick={handleTab}>Repo</button>
                 </div>
                 <div className="wall__events">
                     {seeActivity && (
@@ -95,7 +94,7 @@ const ProfilPage = () => {
                             <Card 
                                 key={user.id}
                                 image={user.avatar_url}
-                                size="small"
+                                size="medium"
                                 event=' '
                                 type='discover'
                                 username={user.login}
