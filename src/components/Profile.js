@@ -15,7 +15,7 @@ const Profile = (props) => {
         <div className="profile">
             <ProfileIcon image={image} size={size} />
             <div className="profile__txt">
-                {username && (<span>@{username}</span>)}
+                {username && (<span>{username}</span>)}
                 {name && (<span>{name}</span>)}
             </div>
         </div>

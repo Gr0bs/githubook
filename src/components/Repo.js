@@ -11,7 +11,9 @@ const Repo = ({username, key}) => {
         {repos && (
             repos.map(repo => (
                 <div className="repo__card" key={repo.id}>
-                    <h2>{repo.full_name}</h2>
+                    <a href={repo.html_url} target="_blank" rel="noreferrer">
+                        <h2>{repo.full_name.substring(username.length + 1)}</h2>
+                    </a>
                     <em>{repo.description}</em>
                 </div>
             ))

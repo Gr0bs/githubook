@@ -17,7 +17,7 @@ const Activity = ({username}) => {
                             key={index}
                             image={event.actor.avatar_url}
                             size="small"
-                            subject={event.repo.name}
+                            subject={event.repo.name.substring(username.length + 1)}
                             date={event.created_at}
                             type='feed'
                             event={"Commit on the repo"}
@@ -31,7 +31,7 @@ const Activity = ({username}) => {
                         key={event.id}
                         image={event.actor.avatar_url}
                         size="small"
-                        subject={event.repo.name}
+                        subject={event.repo.name.substring(username.length + 1)}
                         date={event.created_at}
                         type='feed'
                         event={event.type}

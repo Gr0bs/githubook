@@ -36,7 +36,7 @@ const ProfilPage = () => {
                 // HEADER BANNER WITH USER INFO
                 <header>
                     <Profile 
-                        username={userProfil.login}
+                        username={`@` + userProfil.login}
                         name={userProfil.name}
                         image={userProfil.avatar_url}
                         size='high'
@@ -90,17 +90,19 @@ const ProfilPage = () => {
                     <h2>Suggestions</h2>
                     {errorSuggestion && (<span>{errorSuggestion}</span>)}
                     {suggestion && (
-                        suggestion.map(user => (
-                            <Card 
-                                key={user.id}
-                                image={user.avatar_url}
-                                size="medium"
-                                event=' '
-                                type='discover'
-                                username={user.login}
-                                link={true}
-                            />
-                        ))
+                        suggestion.map((user, index) => (
+                            (index < 5) && (
+                                    <Card 
+                                    key={user.id}
+                                    image={user.avatar_url}
+                                    size="medium"
+                                    event=' '
+                                    type='discover'
+                                    username={user.login}
+                                    link={true}
+                                    />
+                                )
+                            ))
                     )}
                 </div>
             </section>
