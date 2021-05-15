@@ -10,18 +10,14 @@ import Search from './Search'
 
 const Navbar = () => {
 
+    const user = localStorage.getItem('user')
 
     const [value, setValue] = useState('')
-    const {data: user } = useFetch('https://api.github.com/users/Gr0bs')
-    console.log('value :' + value)
+    const {data: username} = useFetch(`https://api.github.com/users/${user}`)
     const [showSearch, setShowSearch] = useState(false)
 
     const openSearch = () => {
         setShowSearch(true)
-    }
-
-    const handleReset= () => {
-        setValue('')
     }
 
     return ( 
@@ -48,9 +44,9 @@ const Navbar = () => {
                 <Link to='/discover'>
                     <Discover className='icon' />
                 </Link>
-                {user && (
-                    <Link to={`/user/${user.login}`}>
-                        <Profile image={user.avatar_url} username={user.login} size='small'/>
+                {username && (
+                    <Link to={`/user/${username.login}`}>
+                        <Profile image={username.avatar_url} username={username.login} size='small'/>
                     </Link>
                 )}
             </div>

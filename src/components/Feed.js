@@ -5,7 +5,9 @@ import {Link} from 'react-router-dom'
 
 const Feed = () => {
 
-    const username = 'Gr0bs'
+    //USECONTEXT FOR USERNAME
+    const username = localStorage.getItem('user')
+
     const {data, error: errorOne} = useFetch(`https://api.github.com/users/${username}/received_events`)
     const {data: misc, error: errorTwo} = useFetch(`https://api.github.com/events`)
 

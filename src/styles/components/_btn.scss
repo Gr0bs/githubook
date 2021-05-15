@@ -6,15 +6,26 @@
     color: white;
     font-size: 1.2rem;
     padding-bottom: 0.3rem;
+    cursor: pointer;
 
     &--profil{
         margin: 1rem;
-        cursor: pointer;
 
         &:hover{
             color: $color-three;
         }
+    }
 
+    &--login{
+        padding: 0.5rem;
+        font-weight: 500;
+        color: $color-five;
+        border:1px solid white;
+
+        &:hover{
+            color: $color-three;
+            background: white;
+        }
     }
 }
 

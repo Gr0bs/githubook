@@ -8,7 +8,7 @@
 
         header{
             background: url('https://picsum.photos/1400/300');
-            height: 12rem;
+            height: 13rem;
             justify-content: center;
             margin: auto;
             display: flex;
@@ -43,7 +43,7 @@
     &__social{
         display: flex;
         margin: 0.2rem;
-        padding: 0;
+        padding: 0.5rem;
 
         > *{
             padding: 0 0.5rem ;
