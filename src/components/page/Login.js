@@ -19,20 +19,24 @@ const Login = () => {
                         <em>Your new <strong>Github</strong> social media</em>
                     </header>
                     <section>
-                        <label className='login__insert'>
-                            Insert your Github username
-                            <input 
-                                type="text" 
-                                placeholder="Bibidu34"
-                                onChange={(e) => setValue(e.target.value)}
-                            />
-                        </label>
-                        <Link to='/'>
-                        <button 
-                            className='btn btn--login'
-                            onClick={handleLogin}
-                            >Let's Go !</button>
-                        </Link>
+                        <form>
+                            <label className='login__insert'>
+                                Insert your Github username
+                                <input 
+                                    className='input'
+                                    type="text" 
+                                    placeholder="Bibidu34"
+                                    onChange={(e) => setValue(e.target.value)}
+                                />
+                            <em>If you don't have any insert <strong>gr0bs</strong></em>
+                            </label>
+                            <Link to='/'>
+                            <button 
+                                className='btn btn--login'
+                                onClick={handleLogin}
+                                >Let's Go !</button>
+                            </Link>
+                        </form>
                     </section>
                 </div>
             </div>

@@ -1,6 +1,6 @@
 import '../styles/App.scss';
 import Navbar from './Navbar';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom'
 import Home from './page/Home'
 import ProfilPage from './page/ProfilPage';
 import Discover from './page/Discover'
@@ -11,8 +11,11 @@ function App() {
 
   return (
     <Router>
-      <div className="app">
 
+    {localStorage.getItem('user') === null && <Redirect to='/login' />}
+    {localStorage.getItem('user') !== null && <Redirect to='/' />}
+
+      <div className="app">
         <Switch>
           <Route exact path='/login'>
             <Login />
