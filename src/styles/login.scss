@@ -22,6 +22,12 @@
     &__insert{
         display: flex;
         flex-direction: column;
+
+        em {
+            font-size: 0.8rem;
+            padding-top: 2px;
+            color: $color-three;
+        }
     }
 
     h1{
