@@ -26,3 +26,12 @@ code {
     // width: 100%;
   width: 1.5rem;
 }
+
+.ad{
+  position: fixed;
+  background: $color-three;
+  border-radius: 5px;
+  padding: 0.5rem;
+  bottom: 1rem;
+  right: 2rem;
+}

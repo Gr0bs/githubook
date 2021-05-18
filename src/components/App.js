@@ -5,7 +5,7 @@ import Home from './page/Home'
 import ProfilPage from './page/ProfilPage';
 import Discover from './page/Discover'
 import Login from './page/Login'
-
+import {ReactComponent as Avatar} from '../images/Logo.svg'
 
 function App() {
 
@@ -15,6 +15,7 @@ function App() {
     {localStorage.getItem('user') === null && <Redirect to='/login' />}
     {localStorage.getItem('user') !== null && <Redirect to='/' />}
 
+        <span className='ad'> <a href="https://github.com/Gr0bs">Made By <strong>Gr0b</strong> <Avatar className='icon' /></a> </span>
       <div className="app">
         <Switch>
           <Route exact path='/login'>
