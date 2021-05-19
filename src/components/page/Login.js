@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import '../../styles/login.scss';
 
 const Login = () => {
+
 
     const [value, setValue] = useState('')
 
@@ -10,8 +11,11 @@ const Login = () => {
         localStorage.setItem('user', value)
     }
 
+
     return ( 
+
         <div className="login">
+        {localStorage.getItem('user') !== null && <Redirect to='/' />}
             <div className="border">
                 <div className="login__card">
                     <header>

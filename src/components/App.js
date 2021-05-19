@@ -13,7 +13,6 @@ function App() {
     <Router>
 
     {localStorage.getItem('user') === null && <Redirect to='/login' />}
-    {localStorage.getItem('user') !== null && <Redirect to='/' />}
 
         <span className='ad'> <a href="https://github.com/Gr0bs">Made By <strong>Gr0b</strong> <Avatar className='icon' /></a> </span>
       <div className="app">
