@@ -1,0 +1,71 @@
+<template>
+  
+</template>
+
+<script>
+export default {
+
+}
+</script>
+
+<style lang="scss" scoped>
+@import '../assets/scss/colors';
+
+.login{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+
+    &__card{
+        background: $color-one;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        width: 30vw;
+        height: 60vh;
+        min-width: 18rem;
+    }
+
+    &__insert{
+        display: flex;
+        flex-direction: column;
+
+        em {
+            font-size: 0.8rem;
+            padding-top: 2px;
+            color: $color-three;
+        }
+    }
+
+    h1{
+        color: $color-five;
+        font-size: 3rem;
+    }
+
+    header{
+        text-align: center;
+    }
+
+    input{
+        color: $color-one;
+        margin-top: 0.5rem;
+    }
+}
+
+section{
+    text-align: center;
+
+    button {
+        margin-top: 1rem;
+    }
+}
+
+.border{
+    background: linear-gradient(to right, $color-three, $color-five);
+    padding: 0.3rem;
+}
+</style>
