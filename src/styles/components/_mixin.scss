@@ -1,7 +1,0 @@
-@import './colors';
-
-@mixin border-bottom {
-    border-bottom: 6px solid $color-three;
-    padding: 0.5rem 0;
-    margin-bottom: 0.5rem;
-}
