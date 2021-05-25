@@ -1,14 +1,15 @@
 <template>
   <div class="home">
+    <Feed />
   </div>
 </template>
 
 <script>
+import Feed from '../components/Feed'
 
 export default {
   name: 'Home',
-  components: {
-  }
+  components: { Feed }
 }
 </script>
 
