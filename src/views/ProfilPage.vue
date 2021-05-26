@@ -85,6 +85,7 @@ import getFetch from '../composable/getFetch'
 import Card from '../components/Card'
 import Activity from '../components/Activity'
 import Repo from '../components/Repo'
+import { onUpdated, ref } from '@vue/runtime-core'
 
 export default {
     components: {Profile, Card, Activity, Repo},
@@ -97,8 +98,14 @@ export default {
     },
     setup(props){
         // User Profil
+        const user = ref(props.username)
+        onUpdated(() => {
+            user.value = props.username
+            console.log(user)
+        })
+
         const {info: userProfil, error, load} = getFetch()
-        load(`https://api.github.com/users/${props.username}`)
+        load(`https://api.github.com/users/${user}`)
 
         // Starred Repo
         const {info: starredRepo, error: errorRepo, load: loadRepo} = getFetch()
@@ -108,7 +115,6 @@ export default {
         const {info: suggestion, error: errorSuggestion, load: loadSuggestion} = getFetch()
         loadSuggestion(`https://api.github.com/users/${props.username}/following`)
 
-
         return { userProfil, error, starredRepo, suggestion, errorSuggestion}
     },
     methods: {
@@ -116,8 +122,7 @@ export default {
             this.seeActivity = !this.seeActivity
             this.seeRepo = !this.seeRepo
         }
-    }
-
+    }    
 }
 </script>
 
@@ -145,7 +150,6 @@ export default {
         .profile{
             transform: translateX(2rem);
             &__txt{
-                font-weight: 600;
                 display: flex;
 
                 flex-direction: column;

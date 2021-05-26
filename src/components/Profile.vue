@@ -39,6 +39,10 @@ export default {
         align-items: center;
         width: max-content;
 
+        &__txt{
+                font-weight: 600;
+        }
+
         :first-child{
             margin-right: 0.2rem;
             align-self: center;
