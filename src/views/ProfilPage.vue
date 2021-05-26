@@ -85,7 +85,6 @@ import getFetch from '../composable/getFetch'
 import Card from '../components/Card'
 import Activity from '../components/Activity'
 import Repo from '../components/Repo'
-import { onUpdated, ref } from '@vue/runtime-core'
 
 export default {
     components: {Profile, Card, Activity, Repo},
@@ -98,14 +97,8 @@ export default {
     },
     setup(props){
         // User Profil
-        const user = ref(props.username)
-        onUpdated(() => {
-            user.value = props.username
-            console.log(user)
-        })
-
         const {info: userProfil, error, load} = getFetch()
-        load(`https://api.github.com/users/${user}`)
+        load(`https://api.github.com/users/${props.username}`)
 
         // Starred Repo
         const {info: starredRepo, error: errorRepo, load: loadRepo} = getFetch()

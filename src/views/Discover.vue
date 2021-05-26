@@ -1,10 +1,35 @@
 <template>
-  <h2>Coucou</h2>
+  <div class="discover">
+      <span v-if="error">{{error}}</span>
+      <span v-if="loading">Loading....</span>
+      <div class="discover__card">
+          <Profile 
+          v-for="repo of repos.items"
+          :key="repo.id"
+          :username="'@' + repo.owner.login"
+          :image="repo.owner.avatar_url"
+          size="small"
+          />
+          <h3>{{repo.name}}</h3>
+          <em>{{repo.description}}</em>
+          <a :href="repo.html_url">See Repo</a>
+      </div>
+  </div>
 </template>
 
 <script>
-export default {
+import getFetch from '../composable/getFetch'
 
+const query = ['bot', 'react', 'vue', 'node', 'tchat', 'script', 'app']
+const rdm = Math.floor(Math.random() * query.length)
+
+export default {
+    setup(){
+        const {info: repos, error, loading, load } = getFetch()
+        load(`https://api.github.com/search/repositories?q=${query[rdm]}&sort=star&order=desc`)
+
+        return {repos, error, loading}
+    }
 }
 </script>
 
