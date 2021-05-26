@@ -22,19 +22,18 @@
     <div class="feed__event">
         <span v-if="errorTwo">{{errorTwo}}</span>
         <span v-if="loadingTwo">Loading...</span>
-
-        <div v-for="event of feed" :key="event.id">
-            <Card 
-                type="card--feed"
-                :username="event.actor.display_login"
-                :image="event.actor.avatar_url"
-                :event="event.type"
-                :subject="event.repo.name"
-                :description="event.payload.description"
-                :date="event.created_at.substring(0,10)"
-                size="medium"
-            />
-        </div>
+        <Card 
+            v-for="event of feed" 
+            :key="event.id"
+            type="card--feed"
+            :username="event.actor.display_login"
+            :image="event.actor.avatar_url"
+            :event="event.type"
+            :subject="event.repo.name"
+            :description="event.payload.description"
+            :date="event.created_at.substring(0,10)"
+            size="medium"
+        />
     </div>
   </div>
 </template>

@@ -12,7 +12,9 @@
             <router-link :to="{name: 'Discover'}">
                 <img src='../assets/images/discover.svg' class="icon" />
             </router-link>
-            <Profile :username="user.login" :image="user.avatar_url" size="small"/>
+            <router-link :to="{name: 'ProfilPage', params: {username: user.login}}">
+                <Profile :username="user.login" :image="user.avatar_url" size="small"/>
+            </router-link>
             <img src='../assets/images/logout.svg' style="width: 1.5rem; paddingLeft: 0.8rem; cursor: pointer;" />
         </div>
     </nav>
