@@ -85,6 +85,8 @@ import getFetch from '../composable/getFetch'
 import Card from '../components/Card'
 import Activity from '../components/Activity'
 import Repo from '../components/Repo'
+import { ref } from '@vue/reactivity'
+import { onUpdated, watch, watchEffect } from '@vue/runtime-core'
 
 export default {
     components: {Profile, Card, Activity, Repo},
@@ -96,17 +98,18 @@ export default {
         }
     },
     setup(props){
+        const user = ref(props.username)
         // User Profil
         const {info: userProfil, error, load} = getFetch()
-        load(`https://api.github.com/users/${props.username}`)
+        load(`https://api.github.com/users/${user.value}`)
 
         // Starred Repo
         const {info: starredRepo, error: errorRepo, load: loadRepo} = getFetch()
-        loadRepo(`https://api.github.com/users/${props.username}/starred`)
+        loadRepo(`https://api.github.com/users/${user.value}/starred`)
         
         //Suggestions
         const {info: suggestion, error: errorSuggestion, load: loadSuggestion} = getFetch()
-        loadSuggestion(`https://api.github.com/users/${props.username}/following`)
+        loadSuggestion(`https://api.github.com/users/${user.value}/following`)
 
         return { userProfil, error, starredRepo, suggestion, errorSuggestion}
     },
@@ -166,6 +169,7 @@ export default {
         display: flex;
         margin: 0.2rem;
         padding: 0.5rem;
+        align-items: center;
 
         > *{
             padding: 0 0.5rem ;

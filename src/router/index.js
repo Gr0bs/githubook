@@ -24,7 +24,8 @@ const routes = [
     path: '/user/:username',
     name: 'ProfilPage',
     component: ProfilPage,
-    props : true // Using the username as props for the API
+    props : true, // Using the username as props for the API
+    
   }
 ]
 

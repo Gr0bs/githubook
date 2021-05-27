@@ -5,7 +5,9 @@
         </router-link>
         <div class="menu__search">
              <input className='input' type="search" placeholder="searching user" />
-             <!-- FUNCTION CLICK FOR VALUE & MODAL WINDOW -->
+             <Search 
+                :username="username"
+             />
              <img src='../assets/images/search.svg' class="icon" />
         </div>
         <div class="menu__right">
@@ -18,12 +20,13 @@
             <img src='../assets/images/logout.svg' style="width: 1.5rem; paddingLeft: 0.8rem; cursor: pointer;" />
         </div>
     </nav>
-<router-view/>
+<router-view :key=$route.params.username />
 </template>
 
 <script>
 import Profile from '../components/Profile'
 import getFetch from '../composable/getFetch'
+import Search from '../components/Search'
 
 export default {
     components: {Profile},
