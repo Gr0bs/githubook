@@ -4,7 +4,13 @@
             <img src='../assets/images/Logo.svg' class="logo"/>
         </router-link>
         <div class="menu__search">
-             <input className='input' type="search" placeholder="searching user" @click="openSearch"/>
+             <input 
+                className='input' 
+                type="search" 
+                placeholder="searching user" 
+                @click="openSearch"
+                v-model="value"
+            />
              <Search 
                 v-if="showSearch"
                 :username="value"

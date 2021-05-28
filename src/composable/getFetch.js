@@ -8,29 +8,30 @@ const getFetch = () => {
 
     const abortCont = new AbortController()
 
-    const load = (url) => {
-        fetch(url, {signal: abortCont.signal})
-        .then(res => {
+    const load =async (url) => {
+        try {
+            const res = await fetch(url, {signal: abortCont.signal})
             if(!res.ok){
                 loading.value = false
                 throw Error('Could not fetch')
             }
-            return res.json()
-        })
-        .then(data => {
+            
+            const data = await res.json()
+
             loading.value = false
             error.value = null
             info.value = data
-        })
-        .catch(err => {
+
+        }catch(err){
+            loading.value = false
+
             if(err.name == 'AbortError'){
                 console.log('Fetch Aboerted')
             } else {
                 error.value = err.message
                 console.log(`Error : ${err.message}`)
             }
-        })
-
+        }
         return () => abortCont.abort()
     }
 

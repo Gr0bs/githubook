@@ -6,7 +6,7 @@
           <span v-if="loading && !empty">Loading....</span>
           <ul v-if="!loading">
               <li v-for="user of users" :key="user.id">
-                  <router-link :to="{name: 'PorfilPage', params: user.login}" @click="handleClick">
+                  <router-link :to="{name: 'ProfilPage', params: user.login}">
                       <Profile
                         :username="user.login"
                         :image="user.avatar_url"
@@ -32,18 +32,41 @@ export default {
             empty: true,
             error: false,
             loading: false,
+            }
             users: null
         }
     },
     methods: {
-        getSearch() {
-            const {info: users, error, loading, load} = getFetch()
-            load(`https://api.github.com/search/users?q=${this.username}+in:login`)
-            
-            return {users, error, loading}
+        async getSearch() {
+            // const {info: users, error, loading, load} = getFetch()
+            // load(`https://api.github.com/search/users?q=${this.username}+in:login`)
+
+            try {
+                const res = await fetch(`https://api.github.com/search/users?q=${this.username}+in:login`)
+                if(!res.ok){
+                    loading.value = false
+                    throw Error('Could not fetch')
+                }
+                
+                const data = await res.json()
+
+                this.loading = false
+                this.loading = null
+                this.users = data.items
+
+            }catch(err){
+                error.value = err.message
+                console.log(`Error : ${err.message}`)
+            }
         },
         close(){
             this.$emit('close')
+        }
+    },
+    watch:{
+        username(newValue){
+           newValue.length > 0 ? this.empty = false : this.empty = true
+           this.getSearch()
         }
     }
 }
