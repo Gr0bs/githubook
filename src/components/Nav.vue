@@ -4,9 +4,11 @@
             <img src='../assets/images/Logo.svg' class="logo"/>
         </router-link>
         <div class="menu__search">
-             <input className='input' type="search" placeholder="searching user" />
+             <input className='input' type="search" placeholder="searching user" @click="openSearch"/>
              <Search 
-                :username="username"
+                v-if="showSearch"
+                :username="value"
+                @close="closeSearch"
              />
              <img src='../assets/images/search.svg' class="icon" />
         </div>
@@ -29,13 +31,27 @@ import getFetch from '../composable/getFetch'
 import Search from '../components/Search'
 
 export default {
-    components: {Profile},
+    components: {Profile, Search},
+    data(){
+        return{
+            showSearch: false,
+            value: ''
+        }
+    },
     setup() {
         const username = 'Gr0bs'
         const {info : user, loading, error, load} = getFetch()
         load(`https://api.github.com/users/${username}`)
 
         return {user, loading, error}
+    },
+    methods: {
+        openSearch(){
+            this.showSearch = true
+        },
+        closeSearch(){
+            this.showSearch = false
+        }
     }
 }
 </script>

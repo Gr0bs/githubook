@@ -1,6 +1,6 @@
 <template>
   <div class="search">
-      <div class="search__model">
+      <div class="search__modal">
           <span v-if="error">{{ error }}</span>
           <span v-if="empty"> Searching for an user ?</span>
           <span v-if="loading && !empty">Loading....</span>
@@ -16,24 +16,41 @@
               </li>
           </ul>
       </div>
-      <div class="search__" @click="handleClick"></div>
+      <div class="search__elt" @click="close"></div>
   </div>
 </template>
 
 <script>
 import Profile from './Profile'
+import getFetch from '../composable/getFetch'
+
 export default {
     components: {Profile},
     props: ["username", "setShowSearch"],
-    setup(){
-        
+    data(){
+        return{
+            empty: true,
+            error: false,
+            loading: false,
+            users: null
+        }
+    },
+    methods: {
+        getSearch() {
+            const {info: users, error, loading, load} = getFetch()
+            load(`https://api.github.com/search/users?q=${this.username}+in:login`)
+            
+            return {users, error, loading}
+        },
+        close(){
+            this.$emit('close')
+        }
     }
-
 }
 </script>
 
 <style lang="scss">
-@import './assets/scss/colors';
+@import '../assets/scss/colors';
 
 .search{
     position: absolute;
