@@ -4,9 +4,9 @@
           <span v-if="error">{{ error }}</span>
           <span v-if="empty"> Searching for an user ?</span>
           <span v-if="loading && !empty">Loading....</span>
-          <ul v-if="!loading">
+          <ul v-if="!loading && !empty">
               <li v-for="user of users" :key="user.id">
-                  <router-link :to="{name: 'ProfilPage', params: user.login}">
+                  <router-link :to="{name: 'ProfilPage', params: {username: user.login} }" @click="close">
                       <Profile
                         :username="user.login"
                         :image="user.avatar_url"
@@ -23,6 +23,7 @@
 <script>
 import Profile from './Profile'
 import getFetch from '../composable/getFetch'
+import { ref, watchEffect } from '@vue/runtime-core'
 
 export default {
     components: {Profile},
@@ -31,8 +32,7 @@ export default {
         return{
             empty: true,
             error: false,
-            loading: false,
-            }
+            loading: true,
             users: null
         }
     },
@@ -51,10 +51,35 @@ export default {
                 const data = await res.json()
 
                 this.loading = false
-                this.loading = null
-                this.users = data.items
+                this.error = false
+                this.users = data.items 
+
+                console.log(this.users)
+
+            }catch(err){async getSearch() {
+            // const {info: users, error, loading, load} = getFetch()
+            // load(`https://api.github.com/search/users?q=${this.username}+in:login`)
+
+            try {
+                const res = await fetch(`https://api.github.com/search/users?q=${this.username}+in:login`)
+                if(!res.ok){
+                    loading.value = false
+                    throw Error('Could not fetch')
+                }
+                
+                const data = await res.json()
+
+                this.loading = false
+                this.error = false
+                this.users = data.items 
+
+                console.log(this.users)
 
             }catch(err){
+                error.value = err.message
+                console.log(`Error : ${err.message}`)
+            }
+        },
                 error.value = err.message
                 console.log(`Error : ${err.message}`)
             }
@@ -65,8 +90,17 @@ export default {
     },
     watch:{
         username(newValue){
-           newValue.length > 0 ? this.empty = false : this.empty = true
-           this.getSearch()
+            console.log(newValue)
+            console.log(this.username)
+            if(newValue.length > 0) {
+                this.empty = false
+                this.getSearch()
+            } else {
+                this.empty = true
+            }
+        },
+        loading(newValue){
+            this.loading = newValue
         }
     }
 }
