@@ -23,7 +23,6 @@
 <script>
 import Profile from './Profile'
 import getFetch from '../composable/getFetch'
-import { ref, watchEffect } from '@vue/runtime-core'
 
 export default {
     components: {Profile},
@@ -38,26 +37,7 @@ export default {
     },
     methods: {
         async getSearch() {
-            // const {info: users, error, loading, load} = getFetch()
-            // load(`https://api.github.com/search/users?q=${this.username}+in:login`)
-
-            try {
-                const res = await fetch(`https://api.github.com/search/users?q=${this.username}+in:login`)
-                if(!res.ok){
-                    loading.value = false
-                    throw Error('Could not fetch')
-                }
-                
-                const data = await res.json()
-
-                this.loading = false
-                this.error = false
-                this.users = data.items 
-
-                console.log(this.users)
-
-            }catch(err){async getSearch() {
-            // const {info: users, error, loading, load} = getFetch()
+            // const {info, error, loading, load} = getFetch()
             // load(`https://api.github.com/search/users?q=${this.username}+in:login`)
 
             try {
@@ -79,10 +59,7 @@ export default {
                 error.value = err.message
                 console.log(`Error : ${err.message}`)
             }
-        },
-                error.value = err.message
-                console.log(`Error : ${err.message}`)
-            }
+
         },
         close(){
             this.$emit('close')

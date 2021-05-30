@@ -2,10 +2,8 @@
   <div class="discover">
       <span v-if="error">{{error}}</span>
       <span v-if="loading">Loading....</span>
-      <div class="discover__card">
+      <div class="discover__card" v-for="repo of repos.items" :key="repo.id">
           <Profile 
-          v-for="repo of repos.items"
-          :key="repo.id"
           :username="'@' + repo.owner.login"
           :image="repo.owner.avatar_url"
           size="small"
@@ -19,16 +17,51 @@
 
 <script>
 import getFetch from '../composable/getFetch'
+import Profile from '../components/Profile'
 
 const query = ['bot', 'react', 'vue', 'node', 'tchat', 'script', 'app']
 const rdm = Math.floor(Math.random() * query.length)
 
-export default {
-    setup(){
-        const {info: repos, error, loading, load } = getFetch()
+export default { try {
+                const res = await fetch(`https://api.github.com/search/users?q=${this.username}+in:login`)
+                if(!res.ok){
+                    loading.value = false
+                    throw Error('Could not fetch')
+                }
+                
+                const data = await res.json()
+
+                this.loading = false
+                this.error = false
+                this.users = data.items 
+
+                console.log(this.users)
+
+            }catch(err){
+                error.value = err.message
+                console.log(`Error : ${err.message}`)
+            }
+    components: {Profile},
+    data(){
+        return{
+            loading: false,
+            error: false,
+            repos: null
+        }
+    },
+    beforeMount() {
+       this.getRepo()
+    },
+    methods: {
+        getRepo() {
+        const {info, error, loading, load } = getFetch()
         load(`https://api.github.com/search/repositories?q=${query[rdm]}&sort=star&order=desc`)
 
-        return {repos, error, loading}
+        this.loading = loading
+        this.error = error
+        this.repos = info
+
+        }
     }
 }
 </script>

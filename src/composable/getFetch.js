@@ -15,7 +15,6 @@ const getFetch = () => {
                 loading.value = false
                 throw Error('Could not fetch')
             }
-            
             const data = await res.json()
 
             loading.value = false
