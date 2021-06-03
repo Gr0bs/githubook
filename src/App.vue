@@ -1,5 +1,6 @@
 <template>
   <Nav />
+  <span className='ad'> <a href="https://github.com/Gr0bs">Made By <strong>Gr0b</strong><img src='./assets/images/Logo.svg' class="icon"/></a> </span>
 </template>
 
 <script>
@@ -62,9 +63,14 @@ body {
 .ad{
   position: fixed;
   background: $color-three;
+  color: black;
   border-radius: 5px;
   padding: 0.5rem;
   bottom: 1rem;
   right: 2rem;
+
+  img{
+    padding-left: 0.5rem;
+  }
 }
 </style>

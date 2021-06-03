@@ -1,6 +1,6 @@
 <template>
   <div class="feed">
-    <div class="feed__discover">
+    <div class="feed__discover" v-if="!error">
         <h2>Discover</h2>
         <span v-if="error">{{error}}</span>
         <span v-if="loading">Loading...</span>
@@ -77,6 +77,10 @@ export default {
     &__event{
         flex-direction: column;
         flex-grow: 3;
+
+        span{
+            color: white;
+        }
     }
 
     &__discover{

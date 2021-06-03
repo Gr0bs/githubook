@@ -42,7 +42,7 @@
         </div>
 
         <!-- FEED -->
-        <section class="wall">
+        <section class="wall" v-if="!error">
             <div class="wall__tab">
                 <button :class="[seeActivity ? `btn btn--profil active` : 'btn btn--profil']" @click="handleTab">Activity</button>
                 <button :class="[seeRepo ? `btn btn--profil active` : 'btn btn--profil']" @click="handleTab">Repo</button>
@@ -135,6 +135,15 @@ export default {
     padding-top: 3rem;
     
     &__banner {
+
+        >span {
+            position: absolute;
+            margin-top: 15rem;
+            left:0;
+            right:0;
+            color: white;
+            font-size: 1rem;
+        }
 
         header{
             background: url('https://picsum.photos/1800/300');

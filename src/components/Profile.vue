@@ -41,6 +41,7 @@ export default {
 
         &__txt{
                 font-weight: 600;
+                text-align: left;
         }
 
         :first-child{
