@@ -22,25 +22,7 @@ import Profile from '../components/Profile'
 const query = ['bot', 'react', 'vue', 'node', 'tchat', 'script', 'app']
 const rdm = Math.floor(Math.random() * query.length)
 
-export default { try {
-                const res = await fetch(`https://api.github.com/search/users?q=${this.username}+in:login`)
-                if(!res.ok){
-                    loading.value = false
-                    throw Error('Could not fetch')
-                }
-                
-                const data = await res.json()
-
-                this.loading = false
-                this.error = false
-                this.users = data.items 
-
-                console.log(this.users)
-
-            }catch(err){
-                error.value = err.message
-                console.log(`Error : ${err.message}`)
-            }
+export default {
     components: {Profile},
     data(){
         return{
@@ -49,6 +31,11 @@ export default { try {
             repos: null
         }
     },
+    beforeCreate () {
+        if(localStorage.getItem('user') === null){
+        this.$router.push({ name: 'Login' })
+        }
+     },
     beforeMount() {
        this.getRepo()
     },

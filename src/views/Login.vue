@@ -1,9 +1,48 @@
 <template>
-  
+  <div class="login">
+      <div class="border">
+          <div class="login__card">
+              <header>
+                  <h1>Githubook</h1>
+                  <em>Your new <strong>Github</strong> social media</em>
+              </header>
+              <section>
+                  <form>
+                      <label class="login__insert">
+                          Insert your Github username
+                            <input 
+                                type="text"
+                                class="input"
+                                placeholder="GandalfTheGrey"
+                                v-model="value"
+                            >
+                            <em>If you don't have any insert <strong>gr0bs</strong></em>
+                      </label>
+                      <router-link :to="{name: 'Home'}">
+                          <button
+                            class="btn btn--login"
+                            @click="handleLogin"
+                          >Let's Go</button>
+                      </router-link>
+                  </form>
+              </section>
+          </div>
+      </div>
+  </div>
 </template>
 
 <script>
 export default {
+    data(){
+        return{
+            value: ''
+        }
+    },
+    methods:{
+        handleLogin(){
+            localStorage.setItem('user', this.value)
+        }
+    }
 
 }
 </script>

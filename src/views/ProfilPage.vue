@@ -86,7 +86,6 @@ import Card from '../components/Card'
 import Activity from '../components/Activity'
 import Repo from '../components/Repo'
 import { ref } from '@vue/reactivity'
-import { onUpdated, watch, watchEffect } from '@vue/runtime-core'
 
 export default {
     components: {Profile, Card, Activity, Repo},
@@ -97,6 +96,11 @@ export default {
             seeRepo: false,
         }
     },
+    beforeCreate () {
+        if(localStorage.getItem('user') === null){
+        this.$router.push({ name: 'Login' })
+        }
+     },
     setup(props){
         const user = ref(props.username)
         // User Profil

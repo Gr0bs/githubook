@@ -1,5 +1,5 @@
 <template>
-    <nav class="menu">
+    <nav class="menu" v-if="logged">
         <router-link :to="{name: 'Home' }">
             <img src='../assets/images/Logo.svg' class="logo"/>
         </router-link>
@@ -25,7 +25,11 @@
             <router-link :to="{name: 'ProfilPage', params: {username: user.login}}">
                 <Profile :username="user.login" :image="user.avatar_url" size="small"/>
             </router-link>
-            <img src='../assets/images/logout.svg' style="width: 1.5rem; paddingLeft: 0.8rem; cursor: pointer;" />
+            <img 
+                @click="handleLogout"
+                src='../assets/images/logout.svg' 
+                style="width: 1.5rem; paddingLeft: 0.8rem; cursor: pointer;" 
+            />
         </div>
     </nav>
 <router-view :key=$route.params.username />
@@ -41,7 +45,13 @@ export default {
     data(){
         return{
             showSearch: false,
-            value: ''
+            value: '',
+            logged: false
+        }
+    },
+    updated(){
+        if(localStorage.getItem('user') !== null){
+            this.logged = true
         }
     },
     setup() {
@@ -57,6 +67,10 @@ export default {
         },
         closeSearch(){
             this.showSearch = false
+        },
+        handleLogout(){
+            localStorage.removeItem('user')
+            window.location.reload()
         }
     }
 }

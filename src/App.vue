@@ -6,12 +6,14 @@
 import Nav from './components/Nav'
 
 export default {
-  components : {Nav}
+   components : {Nav}
 }
 </script>
 
 <style lang="scss">
 @import './assets/scss/colors';
+@import './assets/scss/btn';
+
 
 body {
   margin: 0;
