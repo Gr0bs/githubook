@@ -18,12 +18,10 @@
                             >
                             <em>If you don't have any insert <strong>gr0bs</strong></em>
                       </label>
-                      <router-link :to="{name: 'Home'}">
                           <button
                             class="btn btn--login"
                             @click="handleLogin"
                           >Let's Go</button>
-                      </router-link>
                   </form>
               </section>
           </div>
@@ -32,6 +30,9 @@
 </template>
 
 <script>
+import githubProvider from '../config/authMethod'
+import githubAuth from '../service/auth'
+
 export default {
     data(){
         return{
@@ -39,8 +40,9 @@ export default {
         }
     },
     methods:{
-        handleLogin(){
-            localStorage.setItem('user', this.value)
+        async handleLogin(){
+            const res = await githubAuth(githubProvider)
+            console.log(res)
         }
     }
 

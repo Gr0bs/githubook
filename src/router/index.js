@@ -3,6 +3,7 @@ import Home from '../views/Home.vue'
 import Discover from '../views/Discover'
 import Login from '../views/Login'
 import ProfilPage from '../views/ProfilPage'
+import SignIn from '../views/SignIn'
 
 const routes = [
   {
@@ -27,6 +28,11 @@ const routes = [
     component: ProfilPage,
     props : true, // Using the username as props for the API
     
+  },
+  {
+    path: '/signin',
+    name: 'SignIn',
+    component: SignIn
   }
 ]
 
