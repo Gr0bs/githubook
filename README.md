@@ -17,7 +17,7 @@ can have a *Facebook / instagram* like. This is what's this project is !
 I don't like create something that everyone created. 
 When you search for a app to create in VueJs/ReactJS when your start, it's always "Todo APP", "Weather App" or "Blog"... But that's not really funny and many times the informations are fakes..  
 
-## :map: **Roadmap**  
+## :scroll: **Roadmap**  
  - Implementing Github OAuth in order to connect your github profile  
  - Creating Post   
  - Adding like to a post / Respond to a Post  
