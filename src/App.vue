@@ -1,6 +1,6 @@
 <template>
-  <Nav />
-  <span className='ad'> <a href="https://github.com/Gr0bs">Made By <strong>Gr0b</strong><img src='./assets/images/Logo.svg' class="icon"/></a> </span>
+  <span className='ad'> <a href="https://github.com/Gr0bs">Made by <strong>Gr0b</strong><img src='./assets/images/Logo.svg' class="icon"/></a> </span>
+<router-view :key=$route.params.username />
 </template>
 
 <script>
@@ -65,12 +65,14 @@ body {
   background: $color-three;
   color: black;
   border-radius: 5px;
-  padding: 0.5rem;
+  padding: 0.3rem;
   bottom: 1rem;
   right: 2rem;
+  font-size: 1rem;
 
   img{
     padding-left: 0.5rem;
+    width: 1.2rem;
   }
 }
 </style>

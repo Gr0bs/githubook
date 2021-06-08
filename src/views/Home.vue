@@ -1,15 +1,17 @@
 <template>
   <div class="home">
+  <Nav />
     <Feed />
   </div>
 </template>
 
 <script>
 import Feed from '../components/Feed'
+import Nav from '../components/Nav'
 
 export default {
   name: 'Home',
-  components: { Feed },
+  components: { Feed, Nav },
   beforeCreate () {
     if(localStorage.getItem('user') === null){
       this.$router.push({ name: 'Login' })

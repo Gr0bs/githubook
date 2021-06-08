@@ -1,5 +1,5 @@
 <template>
-    <nav class="menu" v-if="logged">
+    <nav class="menu">
         <router-link :to="{name: 'Home' }">
             <img src='../assets/images/Logo.svg' class="logo"/>
         </router-link>
@@ -8,6 +8,7 @@
                 className='input' 
                 type="search" 
                 placeholder="searching user" 
+
                 @click="openSearch"
                 v-model="value"
             />
@@ -32,7 +33,6 @@
             />
         </div>
     </nav>
-<router-view :key=$route.params.username />
 </template>
 
 <script>
@@ -46,21 +46,26 @@ export default {
         return{
             showSearch: false,
             value: '',
-            logged: false
+            // logged: false,
+            username: null,
+            user: null
         }
     },
-    updated(){
-        if(localStorage.getItem('user') !== null){
-            this.logged = true
-        }
+    // updated(){
+    //     console.log('update')
+    //     if(localStorage.getItem('user') !== null){
+    //         this.logged = true
+    //     }
+    // },
+    beforeMount(){
+        this.fetchUser()
     },
-    setup() {
-        const username = 'Gr0bs'
-        const {info : user, loading, error, load} = getFetch()
-        load(`https://api.github.com/users/${username}`)
+    // setup(props) {
+    //     const {info : user, loading, error, load} = getFetch()
+    //     load(`https://api.github.com/users/${props.username}`)
 
-        return {user, loading, error}
-    },
+    //     return {user, loading, error}
+    // },
     methods: {
         openSearch(){
             this.showSearch = true
@@ -71,6 +76,14 @@ export default {
         handleLogout(){
             localStorage.removeItem('user')
             window.location.reload()
+        },
+        fetchUser(){
+            this.username = localStorage.getItem('user')
+            const {info, loading, error, load} = getFetch()
+            load(`https://api.github.com/users/${this.username}`)
+
+            console.log('fetch')
+            this.user = info
         }
     }
 }

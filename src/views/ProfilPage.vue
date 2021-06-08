@@ -1,4 +1,5 @@
 <template>
+  <Nav />
   <div class="profilePage">
       <div class="profilePage__banner">
           <span v-if="error">{{ error }} - We can't have access to your Github Profil... :(</span>
@@ -86,9 +87,11 @@ import Card from '../components/Card'
 import Activity from '../components/Activity'
 import Repo from '../components/Repo'
 import { ref } from '@vue/reactivity'
+import Nav from '../components/Nav'
+
 
 export default {
-    components: {Profile, Card, Activity, Repo},
+    components: {Profile, Card, Activity, Repo, Nav},
     props: ['username'],
     data(){
         return{

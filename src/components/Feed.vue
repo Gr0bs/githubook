@@ -45,7 +45,7 @@ import Card from '../components/Card'
 export default {
     components: {Card},
      setup() {
-         const username = 'gr0bs'
+         const username = localStorage.getItem('user')
         const {info : events, loading, error, load} = getFetch()
         load(`https://api.github.com/events`)
 

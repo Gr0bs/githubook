@@ -1,4 +1,5 @@
 <template>
+  <Nav />
   <div class="discover">
       <span v-if="error">{{error}}</span>
       <span v-if="loading">Loading....</span>
@@ -18,12 +19,14 @@
 <script>
 import getFetch from '../composable/getFetch'
 import Profile from '../components/Profile'
+import Nav from '../components/Nav'
+
 
 const query = ['bot', 'react', 'vue', 'node', 'tchat', 'script', 'app']
 const rdm = Math.floor(Math.random() * query.length)
 
 export default {
-    components: {Profile},
+    components: {Profile, Nav},
     data(){
         return{
             loading: false,

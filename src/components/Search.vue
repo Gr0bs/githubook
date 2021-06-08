@@ -67,8 +67,6 @@ export default {
     },
     watch:{
         username(newValue){
-            console.log(newValue)
-            console.log(this.username)
             if(newValue.length > 0) {
                 this.empty = false
                 this.getSearch()
