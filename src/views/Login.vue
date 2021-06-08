@@ -75,7 +75,7 @@ export default {
 
         em {
             font-size: 0.8rem;
-            padding-top: 2px;
+            padding-top: 0.3rem;
             color: $color-three;
         }
     }

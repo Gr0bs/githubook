@@ -1,13 +1,26 @@
 <template>
+  <div v-if="logged">
+    <Nav />
+  </div>
   <span className='ad'> <a href="https://github.com/Gr0bs">Made by <strong>Gr0b</strong><img src='./assets/images/Logo.svg' class="icon"/></a> </span>
-<router-view :key=$route.params.username />
+    <router-view :key=$route.params.username />
 </template>
 
 <script>
 import Nav from './components/Nav'
 
 export default {
-   components : {Nav}
+   components : {Nav},
+   data(){
+     return{
+       logged: false
+     }
+   },
+   updated(){
+     if(localStorage.getItem('user') !== null){
+       this.logged = true
+     }
+   }
 }
 </script>
 

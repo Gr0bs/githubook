@@ -46,26 +46,13 @@ export default {
         return{
             showSearch: false,
             value: '',
-            // logged: false,
             username: null,
             user: null
         }
     },
-    // updated(){
-    //     console.log('update')
-    //     if(localStorage.getItem('user') !== null){
-    //         this.logged = true
-    //     }
-    // },
     beforeMount(){
         this.fetchUser()
     },
-    // setup(props) {
-    //     const {info : user, loading, error, load} = getFetch()
-    //     load(`https://api.github.com/users/${props.username}`)
-
-    //     return {user, loading, error}
-    // },
     methods: {
         openSearch(){
             this.showSearch = true
@@ -84,6 +71,12 @@ export default {
 
             console.log('fetch')
             this.user = info
+        }
+    },
+    watch: {
+        user(newValue){
+            this.user = newValue
+            console.log('Update user')
         }
     }
 }
