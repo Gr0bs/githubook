@@ -70,8 +70,9 @@ export default {
         },
         fetchUser(){
             this.username = localStorage.getItem('user')
+            console.log(firebase.auth().currentUser)
             const {info, loading, error, load} = getFetch()
-            load(`https://api.github.com/users/${this.username}`)
+            load(`https://api.github.com/users/${this.usern}`)
 
             console.log('fetch')
             this.user = info
