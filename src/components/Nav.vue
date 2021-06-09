@@ -39,7 +39,6 @@
 import Profile from '../components/Profile'
 import getFetch from '../composable/getFetch'
 import Search from '../components/Search'
-import firebase from 'firebase'
 
 export default {
     components: {Profile, Search},
@@ -62,11 +61,8 @@ export default {
             this.showSearch = false
         },
         handleLogout(){
-           firebase.auth().signOut().then(() => {
-               window.location.reload()
-            }).catch((error) => {
-                console.log(error)
-            })
+            localStorage.removeItem('user')
+            window.location.reload()
         },
         fetchUser(){
             this.username = localStorage.getItem('user')

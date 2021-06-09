@@ -32,6 +32,11 @@ export default {
             repos: null
         }
     },
+    beforeCreate () {
+        if(localStorage.getItem('user') === null){
+        this.$router.push({ name: 'Login' })
+        }
+     },
     beforeMount() {
        this.getRepo()
     },

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="logged">
     <Nav />
   </div>
   <span className='ad'> <a href="https://github.com/Gr0bs">Made by <strong>Gr0b</strong><img src='./assets/images/Logo.svg' class="icon"/></a> </span>
@@ -10,7 +10,17 @@
 import Nav from './components/Nav'
 
 export default {
-   components : {Nav}
+   components : {Nav},
+   data(){
+     return{
+       logged: false
+     }
+   },
+   updated(){
+     if(localStorage.getItem('user') !== null){
+       this.logged = true
+     }
+   }
 }
 </script>
 

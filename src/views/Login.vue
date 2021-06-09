@@ -39,9 +39,9 @@ export default {
         }
     },
     methods:{
-        async handleLogin(){
-            await githubAuth()
-            this.$router.replace({path: '/'})
+        handleLogin(){
+            const res = githubAuth()
+            console.log(res)
         }
     }
 
