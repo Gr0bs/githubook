@@ -4,12 +4,16 @@ import Discover from '../views/Discover'
 import Login from '../views/Login'
 import ProfilPage from '../views/ProfilPage'
 import SignIn from '../views/SignIn'
+import firebase from 'firebase'
 
 const routes = [
   {
     path: '/',
     name: 'Home',
     component: Home,
+    meta: {
+      requiresAuth: true
+    }
     
   },
   {
@@ -39,6 +43,19 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
+})
+
+
+router.beforeEach(async (to, from, next) => {
+  let requiresAuth = false
+  firebase.auth().onAuthStateChanged(user => {
+    if(!user){
+      next('login')
+    } else {
+      requiresAuth = true
+      next()
+    }
+  })
 })
 
 export default router

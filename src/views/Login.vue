@@ -18,11 +18,11 @@
                             >
                             <em>If you don't have any insert <strong>gr0bs</strong></em>
                       </label>
+                  </form>
                           <button
                             class="btn btn--login"
                             @click="handleLogin"
                           >Let's Go</button>
-                  </form>
               </section>
           </div>
       </div>
@@ -30,7 +30,6 @@
 </template>
 
 <script>
-import githubProvider from '../config/authMethod'
 import githubAuth from '../service/auth'
 
 export default {
@@ -40,8 +39,8 @@ export default {
         }
     },
     methods:{
-        async handleLogin(){
-            const res = await githubAuth(githubProvider)
+        handleLogin(){
+            const res = githubAuth()
             console.log(res)
         }
     }
