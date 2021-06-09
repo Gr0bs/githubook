@@ -97,11 +97,6 @@ export default {
             seeRepo: false,
         }
     },
-    beforeCreate () {
-        if(localStorage.getItem('user') === null){
-        this.$router.push({ name: 'Login' })
-        }
-     },
     setup(props){
         const user = ref(props.username)
         // User Profil

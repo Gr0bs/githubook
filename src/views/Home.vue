@@ -10,12 +10,7 @@ import Nav from '../components/Nav'
 
 export default {
   name: 'Home',
-  components: { Feed },
-  beforeCreate () {
-    if(localStorage.getItem('user') === null){
-      this.$router.push({ name: 'Login' })
-    }
-  }
+  components: { Feed }
 }
 </script>
 

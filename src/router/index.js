@@ -3,7 +3,6 @@ import Home from '../views/Home.vue'
 import Discover from '../views/Discover'
 import Login from '../views/Login'
 import ProfilPage from '../views/ProfilPage'
-import SignIn from '../views/SignIn'
 import firebase from 'firebase'
 
 const routes = [
@@ -19,24 +18,28 @@ const routes = [
   {
     path: '/discover',
     name: 'Discover',
-    component: Discover
+    component: Discover,
+    meta: {
+      requiresAuth: true
+    }
   },
   {
     path: '/login',
     name: 'Login',
-    component: Login
+    component: Login,
+    meta: {
+      requiresAuth: false
+    }
   },
   {
     path: '/user/:username',
     name: 'ProfilPage',
     component: ProfilPage,
+    meta: {
+      requiresAuth: true
+    },
     props : true, // Using the username as props for the API
     
-  },
-  {
-    path: '/signin',
-    name: 'SignIn',
-    component: SignIn
   }
 ]
 
@@ -46,16 +49,16 @@ const router = createRouter({
 })
 
 
-router.beforeEach(async (to, from, next) => {
-  let requiresAuth = false
-  firebase.auth().onAuthStateChanged(user => {
-    if(!user){
-      next('login')
-    } else {
-      requiresAuth = true
-      next()
-    }
-  })
-})
+router.beforeEach((to, from, next) => {
+  const requiresAuth = to.matched.some(record => record.meta.requiresAuth)
+  const isAuthenticated = firebase.auth().currentUser
+  if(requiresAuth && !isAuthenticated){
+    next({
+      path: '/login'
+    })
+  } else {
+    next()
+  }
+});
 
 export default router
